@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="file" version="3.0" method="upgrade">
+  <name>BootOne: Responsive Layout for JoomGallery</name>
+  <creationDate>2015/05/20</creationDate>
+  <author>JoomGallery::ProjectTeam</author>
+  <copyright>This component is released under the GNU/GPL License</copyright>
+  <authorEmail>team@joomgallery.net</authorEmail>
+  <authorUrl>http://www.joomgallery.net</authorUrl>
+  <version>1.0 ALPHA</version>
+  <description>BootOne: Responsive Layout for JoomGallery</description>
+  <fileset>
+    <files>
+      <file>components/com_joomgallery/views/gallery/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/gallery/tmpl/bootone.xml</file>
+      <file>media/joomgallery/css/bootone.css</file>
+    </files>
+  </fileset>
+  <languages folder="language" client="site">
+    <language tag="en-GB" client="site">en-GB/en-GB.com_joomgallery.layout.bootone.ini</language>
+  </languages>
+</extension>
