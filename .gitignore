@@ -655,6 +655,7 @@ plugins/authentication/cookie/cookie.xml
 robots.txt.dist
 
 libraries
+plugins
 
 administrator
 components/com_joomgallery/controller.php
@@ -1021,6 +1022,12 @@ media/joomgallery/js/jswindow.js
 media/joomgallery/js/maintenance.js
 media/joomgallery/js/mini.js
 media/joomgallery/js/motiongallery.js
+media/joomgallery/js/motiongallery/css/index.html
+media/joomgallery/js/motiongallery/css/jquery.mThumbnailScroller.css
+media/joomgallery/js/motiongallery/index.html
+media/joomgallery/js/motiongallery/js/index.html
+media/joomgallery/js/motiongallery/js/jquery.mThumbnailScroller.js
+media/joomgallery/js/motiongallery/js/jquery.mThumbnailScroller.min.js
 media/joomgallery/js/pngbehavior.htc
 media/joomgallery/js/slimbox/css/index.html
 media/joomgallery/js/slimbox/css/slimbox.css
