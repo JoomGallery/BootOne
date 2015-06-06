@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.'); ?>
 <form action="<?php echo JRoute::_('index.php?task=category.unlock&catid='.$this->cat->cid);?>" method="post" class="form-inline" onsubmit="joomUnlock();return false;" autocomplete="off">
-  <div class="well" style="text-align:center;">
+  <div class="well text-center">
     <h3><?php echo JText::_('COM_JOOMGALLERY_CATEGORY_PASSWORD_PROTECTED'); ?></h3>
     <label for="jg_password"><?php echo JText::_('COM_JOOMGALLERY_CATEGORY_PASSWORD'); ?></label>
     <input type="password" name="password" id="jg_password" />

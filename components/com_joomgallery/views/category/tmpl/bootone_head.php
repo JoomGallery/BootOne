@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.'); ?>
   <div class="jg_category">
 <?php if($this->_config->get('jg_showcathead')): ?>
-    <div class="well well-small jg-header">
+    <div class="well well-sm">
 <?php if($this->params->get('show_feed_icon')): ?>
       <div class="jg_feed_icon">
         <a href="<?php echo $this->params->get('feed_url'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPTEXT', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPCAPTION', true); ?>>
@@ -32,9 +32,10 @@
 <?php   endif; ?>
       </div>
 <?php endif;
-      if($this->params->get('show_upload_icon')): ?>
+      if($this->params->get('show_upload_icon')):
+        JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
       <div class="jg_upload_icon">
-        <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$this->category->cid); ?>" class="modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
+        <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$this->category->cid); ?>" class="jg-bootone-modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
           <?php echo JHtml::_('joomgallery.icon', 'add.png', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>
         </a>
       </div>

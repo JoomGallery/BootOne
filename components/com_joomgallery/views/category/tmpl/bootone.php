@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 
-echo $this->loadTemplate('header');
+echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1));
 
 if(count($this->categories)):
   echo $this->loadTemplate('subcategories');
@@ -11,4 +11,4 @@ if(count($this->images)):
   echo $this->loadTemplate('images');
 endif;
 
-echo $this->loadTemplate('footer');
+echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));

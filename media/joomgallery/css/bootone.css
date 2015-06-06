@@ -1,0 +1,60 @@
+.jg-bootone .well{
+  text-align:center;
+}
+
+.jg-bootone .caption .list-unstyled{
+  margin-bottom:0;
+}
+
+.jg-counts{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.jg-pathway{
+  margin-bottom:10px;
+}
+.jg-pathway.jg-pathway-footer{
+  margin-top:10px;
+}
+.jg-pathway.jg-pathway-footer:last-child{
+  margin-bottom:0;
+}
+
+.jg-bootone .caption h3{
+  margin-top:10px;
+}
+
+.jg-comment-author{
+  width:80px;
+}
+
+.jg-comments-form:last-child{
+  margin-top:20px;
+}
+.jg-comments-form:first-child{
+  margin-bottom:20px;
+}
+
+.jg-bootone .pager{
+  margin:10px 0 0;
+}
+.jg-bootone .pager:first-child{
+  margin:0;
+}
+
+.jg-iconbar{
+  margin-top:10px;
+}
+
+.jg_displaynone{
+  display:none;
+}
+
+.jg_icon{
+  margin:0 3px;
+}
+
+.jg-minis{
+  margin:5px 0;
+}

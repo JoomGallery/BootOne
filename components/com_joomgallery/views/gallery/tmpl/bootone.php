@@ -1,15 +1,15 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
-echo $this->loadTemplate('header'); ?>
+echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
 <?php if($this->_config->get('jg_anchors')): ?>
   <a name="gallery"></a>
 <?php endif;
       if($this->_config->get('jg_showallcathead')): ?>
-  <div class="well well-small jg-header">
+  <div class="well well-sm">
     <?php echo JText::_('COM_JOOMGALLERY_COMMON_CATEGORIES'); ?>
   </div>
 <?php endif;
-      if($this->params->get('show_count_top', 1)): ?>
-  <div class="jg_galcountcats">
+      if($this->params->get('show_count_top', 0)): ?>
+  <div class="jg-counts">
 <?php   if($this->total == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_GALLERY_THERE_IS_ONE_CATEGORY_IN_GALLERY'); ?>
 <?php   endif;
@@ -18,8 +18,8 @@ echo $this->loadTemplate('header'); ?>
 <?php   endif; ?>
   </div>
 <?php endif;
-      if($this->params->get('show_pagination_top', 1)): ?>
-  <div class="pagination pagination-centered">
+      if($this->params->get('show_pagination_top', 0)): ?>
+  <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
 <?php endif;
@@ -27,20 +27,19 @@ echo $this->loadTemplate('header'); ?>
       $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
       $index    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++):?>
-  <div class="jg_ro row-fluid jg_row<?php echo ($this->i % 2) + 1; ?>">
-    <ul class="thumbnails" style="margin-bottom:0px;">
+  <div class="row">
 <?php   for($col_count = 0; (($col_count < $this->_config->get('jg_colcat')) && ($index < count($this->rows))); $col_count++):
           $row = $this->rows[$index]; ?>
-<?php     if($row->thumb_src): ?>
 
-      <li class="span6">
-        <div class="thumbnail">
-          <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
-            <img src="<?php echo $row->thumb_src; ?>" class="jg_photo_disabled" alt="<?php echo $row->name; ?>" />
-          </a>
+    <div class="col-md-6">
+      <div class="thumbnail">
+<?php     if($row->thumb_src): ?>
+        <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
+          <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->name; ?>" />
+        </a>
 <?php     endif; ?>
-      <div class="<?php echo $row->textcontainer; ?>">
-        <ul>
+      <div class="caption">
+        <ul class="list-unstyled">
           <li>
 <?php     if(in_array($row->access, $this->_user->getAuthorisedViewLevels())): ?>
             <a href="<?php echo $row->link; ?>">
@@ -53,7 +52,7 @@ echo $this->loadTemplate('header'); ?>
 <?php       endif; ?>
 <?php     else: ?>
             <span class="jg_no_access<?php echo JHTML::_('joomgallery.tip', JText::_('COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'), $this->escape($row->name), false, false); ?>">
-              <b><?php echo $this->escape($row->name); ?></b>
+              <h3><?php echo $this->escape($row->name); ?></h3>
               <?php if($this->_config->get('jg_showrestrictedhint')): echo JHtml::_('joomgallery.icon', 'group_key.png', 'COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'); endif; ?>
             </span>
 <?php     endif; ?>
@@ -101,9 +100,10 @@ echo $this->loadTemplate('header'); ?>
 <?php       endif; ?>
           </li>
 <?php     endif;
-          if(isset($row->show_upload_icon) && $row->show_upload_icon): ?>
+          if(isset($row->show_upload_icon) && $row->show_upload_icon):
+            JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
             <li>
-              <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$row->cid); ?>" class="modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
+              <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$row->cid); ?>" class="jg-bootone-modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
                 <?php echo JHtml::_('joomgallery.icon', 'add.png', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?></a>
             </li>
 <?php     endif; ?>
@@ -113,19 +113,15 @@ echo $this->loadTemplate('header'); ?>
           if($this->_config->get('jg_showsubsingalleryview')):
             JHTML::_('joomgallery.categorytree', $row->cid, $row->textcontainer);
           endif; ?>
+      </div>
     </div>
-    </li>
 <?php     $index++;
         endfor; ?>
-     </ul>
   </div>
 <?php   $this->i++;
       endfor;
-      if($this->_config->get('jg_showallcathead')): ?>
-  <div class="jg-foote"></div>
-<?php endif;
       if($this->params->get('show_count_bottom')): ?>
-  <div class="jg_galcountcats">
+  <div class="jg-counts">
 <?php   if($this->total == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_GALLERY_THERE_IS_ONE_CATEGORY_IN_GALLERY'); ?>
 <?php   endif;
@@ -135,8 +131,8 @@ echo $this->loadTemplate('header'); ?>
   </div>
 <?php endif;
       if($this->params->get('show_pagination_bottom')): ?>
-  <div class="pagination pagination-centered">
+  <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
 <?php endif;
-echo $this->loadTemplate('footer');
+echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));

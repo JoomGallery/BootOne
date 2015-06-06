@@ -3,7 +3,7 @@
   <a name="category"></a>
 <?php endif;
       if($this->params->get('show_count_img_top')): ?>
-  <div class="jg_catcountimg">
+  <div class="jg-counts">
 <?php   if($this->totalimages == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_CATEGORY_THERE_IS_ONE_IMAGE_IN_CATEGORY'); ?>
 <?php   endif;
@@ -13,38 +13,32 @@
   </div>
 <?php endif;
       if($this->params->get('show_pagination_img_top')): ?>
-  <div class="pagination pagination-centered">
+  <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
 <?php endif;
-      if($this->_config->get('jg_coolirislink')): ?>
-  <a id="jg_cooliris" href="javascript:PicLensLite.start({feedUrl:'<?php echo JRoute::_('index.php?view=category&amp;catid='.$this->category->cid.'&amp;page='.$this->page.'&amp;format=raw', true); ?>',maxScale:0});">
-    <span class="icon-eye"></span>
-    <?php echo JText::_('COM_JOOMGALLERY_CATEGORY_COOLIRISLINK_TEXT'); ?></a>
-<?php endif; ?>
-<?php if($this->params->get('show_all_in_popup')):
+      if($this->params->get('show_all_in_popup')):
         echo $this->popup['before'];
       endif;
-      $count_pics = count($this->images);
+      $count_pics = count($this->images);$this->_config->set('jg_colnumb', 4);
       $column     = $this->_config->get('jg_colnumb');
       $num_rows   = ceil($count_pics / $column);
       $index      = 0;
       $this->i    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
-  <div class="jg_ro row-fluid jg_row<?php $this->i++; echo ($this->i % 2) + 1; ?>">
-    <ul class="thumbnails" style="margin-bottom:0px;">
+  <div class="row">
 <?php   for($col_count = 0; ($col_count < $column) && ($index < $count_pics); $col_count++):
           $row = $this->images[$index]; ?>
-      <li class="span3">
+      <div class="col-md-3">
 <?php     if(!$row->show_elems): ?>
-          <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>" class="thumbnail jg_catelem_photo_disabled jg_catelem_photo_align_disabled">
-            <img src="<?php echo $row->thumb_src; ?>" class="jg_photo_disabled" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
+          <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>" class="thumbnail">
+            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
 <?php     else: ?>
         <div class="thumbnail">
-          <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>" class="jg_catelem_photo_disabled jg_catelem_photo_align_disabled">
-            <img src="<?php echo $row->thumb_src; ?>" class="jg_photo_disabled" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
-          <div class="jg_catelem_txt">
-            <ul>
+          <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
+            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
+          <div class="caption jg_catelem_txt">
+            <ul class="list-unstyled text-center">
 <?php     if($this->_config->get('jg_showtitle') || ($this->_config->get('jg_showpicasnew') && $row->isnew)): ?>
               <li>
 <?php       if($this->_config->get('jg_showtitle')): ?>
@@ -115,8 +109,9 @@
                   <?php echo JHTML::_('joomgallery.icon', 'basket_put_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION'); ?>
                 </span>
 <?php       endif;
-            if($this->params->get('show_report_icon') == 1): ?>
-                <a href="<?php echo JRoute::_('index.php?view=report&id='.$row->id.'&catid='.$row->catid.'&tmpl=component'); ?>" class="hasTooltip jg_modal" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPTEXT'); ?>" rel="{handler:'iframe', size:{x:600,y:520}}"><!--, size:{x:200,y:200}-->
+            if($this->params->get('show_report_icon') == 1):
+              JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
+                <a href="<?php echo JRoute::_('index.php?view=report&id='.$row->id.'&catid='.$row->catid.'&tmpl=component'); ?>" class="hasTooltip jg-bootone-modal" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPTEXT'); ?>" rel="{handler:'iframe', size:{x:600,y:520}}"><!--, size:{x:200,y:200}-->
                   <?php echo JHTML::_('joomgallery.icon', 'exclamation.png', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?></a>
       <?php endif;
             if($this->params->get('show_report_icon') == -1): ?>
@@ -139,20 +134,19 @@
           </div>
         </div>
 <?php endif; ?>
-      </li>
+      </div>
 <?php     $index++;
         endfor; ?>
-    </ul>
   </div>
 <?php endfor;
       if($this->params->get('show_all_in_popup')):
         echo $this->popup['after'];
       endif;
       if($this->_config->get('jg_showcathead')): ?>
-  <div class="jg-foote"></div>
+  <div class="well well-sm"></div>
 <?php endif;
       if($this->params->get('show_count_img_bottom')): ?>
-  <div class="jg_catcountimg">
+  <div class="jg-counts">
 <?php   if($this->totalimages == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_CATEGORY_THERE_IS_ONE_IMAGE_IN_CATEGORY'); ?>
 <?php   endif;
@@ -162,18 +156,7 @@
   </div>
 <?php endif;
       if($this->params->get('show_pagination_img_bottom')): ?>
-  <div class="pagination pagination-centered">
+  <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
-  </div>
-<?php endif;
-      if($this->params->get('show_report_icon') == 1):
-        JHtml::_('behavior.modal', '.jg_modal'); ?>
-  <div id="reportModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="reportModalLabel"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_REPORT_IMAGE'); ?></h3>
-    </div>
-    <div class="modal-body">
-    </div>
   </div>
 <?php endif;
