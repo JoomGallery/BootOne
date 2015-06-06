@@ -657,7 +657,13 @@ robots.txt.dist
 libraries
 plugins
 
-administrator
+administrator/*
+!administrator/components/
+administrator/components/com_joomgallery/*
+!administrator/components/com_joomgallery/layouts/
+administrator/components/com_joomgallery/layouts/index.html
+administrator/components/com_joomgallery/layouts/joomgallery/index.html
+administrator/components/com_joomgallery/layouts/joomgallery/migration
 components/com_joomgallery/controller.php
 components/com_joomgallery/controllers/
 components/com_joomgallery/helpers/
