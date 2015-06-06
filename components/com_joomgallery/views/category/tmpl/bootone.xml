@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-  <layout title="COM_JOOMGALLERY_LAYOUT_CATEGORY_DEFAULT">
+  <layout title="Category View: Bootstrapped">
     <message>
       <![CDATA[COM_JOOMGALLERY_LAYOUT_CATEGORY_DEFAULT_DESC]]>
     </message>

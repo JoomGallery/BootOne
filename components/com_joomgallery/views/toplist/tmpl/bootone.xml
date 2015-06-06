@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-  <layout title="COM_JOOMGALLERY_LAYOUT_TOPLIST_DEFAULT">
+  <layout title="Toplist: Bootstrapped">
     <message>
       <![CDATA[COM_JOOMGALLERY_LAYOUT_TOPLIST_DEFAULT_DESC]]>
     </message>

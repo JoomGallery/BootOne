@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_JOOMGALLERY_LAYOUT_USERCATEGORIES_DEFAULT">
+	<layout title="User Categories: Bootstrapped">
 		<message>
 			<![CDATA[COM_JOOMGALLERY_LAYOUT_USERCATEGORIES_DEFAULT_DESC]]>
 		</message>

@@ -10,8 +10,35 @@
   <description>BootOne: Responsive Layout for JoomGallery</description>
   <fileset>
     <files>
+      <file>components/com_joomgallery/views/category/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/category/tmpl/bootone_head.php</file>
+      <file>components/com_joomgallery/views/category/tmpl/bootone_images.php</file>
+      <file>components/com_joomgallery/views/category/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/category/tmpl/bootone_password.php</file>
+      <file>components/com_joomgallery/views/category/tmpl/bootone_subcategories.php</file>
+      <file>components/com_joomgallery/views/detail/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/detail/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/detail/tmpl/bootone_commentsarea.php</file>
+      <file>components/com_joomgallery/views/downloadzip/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/edit/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/edit/tmpl/bootone_options.php</file>
+      <file>components/com_joomgallery/views/editcategory/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/editcategory/tmpl/bootone_options.php</file>
+      <file>components/com_joomgallery/views/favourites/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/favourites/tmpl/bootone.xml</file>
       <file>components/com_joomgallery/views/gallery/tmpl/bootone.php</file>
       <file>components/com_joomgallery/views/gallery/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/search/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/toplist/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/toplist/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/upload/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/upload/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/upload/tmpl/bootone_ajax.php</file>
+      <file>components/com_joomgallery/views/upload/tmpl/bootone_single.php</file>
+      <file>components/com_joomgallery/views/usercategories/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/usercategories/tmpl/bootone.xml</file>
+      <file>components/com_joomgallery/views/userpanel/tmpl/bootone.php</file>
+      <file>components/com_joomgallery/views/userpanel/tmpl/bootone.xml</file>
       <file>media/joomgallery/css/bootone.css</file>
     </files>
   </fileset>
