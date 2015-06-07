@@ -6,7 +6,7 @@
       || $this->params->get('show_voting_area') || $this->params->get('show_bbcode')
       || $this->params->get('show_comments_block') || $this->params->get('show_send2friend_block'))):
         $this->accordionEnabled = true;
-        $this->toggler = '<h4 class="panel-title"><a data-toggle="collapse" data-parent="#jg-details-accordion" href="#jg-details-collapse%1$s" aria-expanded="false" aria-controls="jg-details-collapse%1$s">%2$s</a></h4>';
+        $this->toggler = '<h4 class="accordion-toggle"><a data-toggle="collapse" data-parent="#jg-details-accordion" href="#jg-details-collapse%1$s" aria-expanded="false" aria-controls="jg-details-collapse%1$s">%2$s</a></h4>';
         $this->slider = ' id="jg-details-collapse%1$s" class="panel-collapse collapse" role="tabpanel"';
       endif;
 echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
@@ -25,7 +25,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php if($this->params->get('image_linked')): ?>
     <a <?php echo $this->image->atagtitle; ?> href="<?php echo $this->image->link; ?>">
 <?php endif; ?>
-      <img src="<?php echo $this->image->img_src; ?>" class="img-thumbnail" id="jg_photo_big" width="<?php echo $this->image->width; ?>" height="<?php echo $this->image->height; ?>" alt="<?php echo $this->image->imgtitle;?>" <?php echo $this->extra; ?> />
+      <img src="<?php echo $this->image->img_src; ?>" class="img-polaroid" id="jg_photo_big" width="<?php echo $this->image->width; ?>" height="<?php echo $this->image->height; ?>" alt="<?php echo $this->image->imgtitle;?>" <?php echo $this->extra; ?> />
 <?php if($this->params->get('image_linked')): ?>
     </a>
 <?php endif;
@@ -80,8 +80,25 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
     document.getElementById('jg-slideshow-noscript').className = 'hidden';
   </script>
 <?php endif; ?>
-  <div class="row">
-    <div class="col-sm-6 col-sm-push-3 jg-iconbar text-center">
+  <div class="row-fluid">
+    <div class="hidden-phone span3 text-center">
+<?php if($this->params->get('show_previous_link')): ?>
+<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
+      <form  name="form_jg_back_link" action="<?php echo $this->pagination['previous']['link']; ?>">
+        <input type="hidden" name="jg_back_link" readonly="readonly" />
+      </form>
+<?php   endif;?>
+      <ul class="pager">
+        <li><a href="<?php echo $this->pagination['previous']['link']; ?>">
+          &larr; <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_PREVIOUS'); ?></a>
+        </li>
+      </ul>
+<?php   if($this->params->get('show_previous_text')): ?>
+      <?php echo $this->pagination['previous']['text']; ?>
+<?php   endif;
+      endif; ?>
+    </div>
+    <div class="span6 jg-iconbar text-center">
 <?php if($this->params->get('show_zoom_icon') == 1): ?>
       <a <?php echo $this->image->atagtitle; ?> href="<?php echo $this->params->get('image_linked') ? JHtml::_('joomgallery.openimage', $this->_config->get('jg_bigpic_open'), $this->image, false, 'joomgalleryIcon') : $this->image->link; ?>"<?php //echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION', true); ?>>
         <?php echo JHTML::_('joomgallery.icon', 'zoom.png', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION'); ?></a>
@@ -156,7 +173,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif; ?>
       <?php echo $this->event->icons; ?>
     </div>
-    <div class="col-xs-6 col-sm-pull-6 col-sm-3 text-center">
+    <div class="visible-phone span3 text-center">
 <?php if($this->params->get('show_previous_link')): ?>
 <?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
       <form  name="form_jg_back_link" action="<?php echo $this->pagination['previous']['link']; ?>">
@@ -173,7 +190,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   endif;
       endif; ?>
     </div>
-    <div class="col-xs-6 col-sm-3 text-center">
+    <div class="col-xs-6 span3 text-center">
 <?php if($this->params->get('show_next_link')): ?>
 <?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
       <form name="form_jg_forward_link" action="<?php echo $this->pagination['next']['link']; ?>">
@@ -227,7 +244,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif;
       if($this->params->get('show_detailbtm_modules', 0)):
         foreach($this->modules['detailbtm'] as $module): ?>
-  <div class="well well-sm">
+  <div class="well well-small">
 <?php     if($module->showtitle): ?>
     <div class="jg-details-header">
       <h4>
@@ -241,18 +258,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       endif; ?>
   <div<?php echo $this->accordionEnabled ? ' class="panel-group" id="jg-details-accordion" role="tablist" aria-multiselectable="true"' : ''; ?>>
 <?php if($this->_config->get('jg_showdetail')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo str_replace('aria-expanded="false"', 'aria-expanded="true"', sprintf($this->toggler, 'Details', JText::_('COM_JOOMGALLERY_DETAIL_INFO'))); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_INFO'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_INFO'); ?></h4>
       <?php endif; ?>
     </div>
     <?php if(!empty($this->slider)): ?>
     <div <?php echo str_replace('panel-collapse collapse', 'panel-collapse collapse in', sprintf($this->slider, 'Details')); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
         <dl class="dl-horizontal">
 <?php   if($this->_config->get('jg_showdetaildescription') && strlen($this->image->imgtext) > 0): ?>
           <dt>
@@ -334,18 +351,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif;
       if($this->params->get('show_detailpane_modules')):
         foreach($this->modules['detailpane'] as $key => $module): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Module'.$key, $module->title); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo $module->title; ?></h4>
+      <h4 class="accordion-toggle"><?php echo $module->title; ?></h4>
       <?php endif; ?>
     </div>
 <?php     if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Module'.$key); ?>>
 <?php     endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
         <?php echo $module->rendered; ?>
       </div>
 <?php     if(!empty($this->slider)): ?>
@@ -355,18 +372,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   endforeach;
       endif;
       if($this->params->get('show_exifdata')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Exif', JText::_('COM_JOOMGALLERY_EXIF_DATA')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_EXIF_DATA'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_EXIF_DATA'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Exif'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
         <?php echo $this->exifdata; ?>
       </div>
 <?php   if(!empty($this->slider)): ?>
@@ -375,18 +392,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_map')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Map', JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_(COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_(COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Map'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
         <div id="jg_geomap">
           <script type="text/javascript">
             document.write(Joomla.JText._('COM_JOOMGALLERY_DETAIL_MAPS_BROWSER_IS_INCOMPATIBLE'));
@@ -411,12 +428,12 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_iptcdata')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'IPTC', JText::_('COM_JOOMGALLERY_IPTC_DATA')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?></h4>
       <?php endif; ?>
       <h4  <?php echo sprintf($this->toggler, 'IPTC'); ?>>
         <?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?>
@@ -425,7 +442,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'IPTC'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
         <?php echo $this->iptcdata.'&nbsp;'; ?>
       </div>
 <?php   if(!empty($this->slider)): ?>
@@ -434,18 +451,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_voting_area')): ?>
-  <div id="jg_voting" class="panel panel-default">
-    <div class="panel-heading">
+  <div id="jg_voting" class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Voting', JText::_('COM_JOOMGALLERY_DETAIL_RATING')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_RATING'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_RATING'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Voting'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
 <?php   if($this->params->get('voting_message')): ?>
         <?php echo $this->params->get('voting_message'); ?>
 <?php   endif;
@@ -505,35 +522,35 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_bbcode')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'BBCode', JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'BBCode'); ?>>
 <?php   endif; ?>
-      <div class="panel-body form-horizontal">
+      <div class="accordion-inner form-horizontal">
 <?php   if($this->params->get('bbcode_img')): ?>
-        <div class="form-group">
-          <label class="col-md-3 control-label">
+        <div class="control-group">
+          <label class="control-label">
             <?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_IMG'); ?>
           </label>
-          <div class="col-md-9">
-            <input title="<?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_IMG'); ?>" type="text" class="form-control" size="50" value="[IMG]<?php echo $this->params->get('bbcode_img'); ?>[/IMG]" readonly="readonly" onclick="select()" />
+          <div class="controls">
+            <input title="<?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_IMG'); ?>" type="text" class="span12" size="50" value="[IMG]<?php echo $this->params->get('bbcode_img'); ?>[/IMG]" readonly="readonly" onclick="select()" />
           </div>
         </div>
 <?php   endif;
         if($this->params->get('bbcode_url')): ?>
-        <div class="form-group">
-          <label class="col-md-3 control-label">
+        <div class="control-group">
+          <label class="control-label">
             <?php echo  JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_LINK'); ?>
           </label>
-          <div class="col-md-9">
-            <input title="<?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_IMG'); ?>" type="text" class="form-control" size="50" value="[URL]<?php echo $this->params->get('bbcode_url'); ?>[/URL]" readonly="readonly" onclick="select()" />
+          <div class="controls">
+            <input title="<?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_IMG'); ?>" type="text" class="span12" size="50" value="[URL]<?php echo $this->params->get('bbcode_url'); ?>[/URL]" readonly="readonly" onclick="select()" />
           </div>
         </div>
 <?php   endif; ?>
@@ -544,26 +561,26 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_comments_block')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Comments', JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Comments'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
 <?php   if($this->_config->get('jg_showcommentsarea') == 2):
           echo $this->loadTemplate('commentsarea');
         endif;
         if($this->params->get('commenting_allowed')): ?>
         <form name="commentform" action="<?php echo JRoute::_('index.php?task=comments.comment&id='.$this->image->id); ?>" method="post" class="jg-comments-form">
           <a name="joomcommentform"></a>
-          <div class="row">
-            <div class="col-md-3">
+          <div class="row-fluid">
+            <div class="span3">
             <?php echo $this->_user->get('username'); ?>
 <?php     if(!$this->_user->get('id') && $this->_config->get('jg_namedanoncomment')): ?>
               <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_GUEST'); ?>" type="text" class="form-control" name="cmtname" value="<?php echo $this->_mainframe->getUserState('joom.comments.name', JText::_('COM_JOOMGALLERY_COMMON_GUEST')); ?>" tabindex="1" />
@@ -589,9 +606,9 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php     endif; ?>
               </div>
             </div>
-            <div class="col-md-9">
-              <div class="form-group">
-                <textarea title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_GUEST'); ?>" cols="40" rows="<?php echo $this->_config->get('jg_smiliesupport') ? 8 : 4; ?>" name="cmttext" class="form-control" tabindex="100" ><?php echo $this->_mainframe->getUserState('joom.comments.text'); ?></textarea>
+            <div class="span9">
+              <div class="control-group">
+                <textarea title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_GUEST'); ?>" cols="40" rows="<?php echo $this->_config->get('jg_smiliesupport') ? 8 : 4; ?>" name="cmttext" class="span12" tabindex="100" ><?php echo $this->_mainframe->getUserState('joom.comments.text'); ?></textarea>
               </div>
               <?php echo $this->event->captchas; ?>
               <div class="btn-toolbar">
@@ -616,34 +633,34 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php endif;
       if($this->params->get('show_send2friend_block')): ?>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Send2Friend', JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND')); ?>
       <?php else: ?>
-      <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND'); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Send2Friend'); ?> >
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="accordion-inner">
 <?php   if($this->params->get('show_send2friend_form')): ?>
         <form name="send2friend" action="<?php echo JRoute::_('index.php?task=send2friend.send&id='.$this->image->id); ?>" method="post" class="form-horizontal">
-          <div class="form-group">
-            <label for="send2friendname" class="col-md-4 control-label"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND_FRIENDS_NAME'); ?></label>
-            <div class="col-md-4">
+          <div class="control-group">
+            <label for="send2friendname" class="control-label"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND_FRIENDS_NAME'); ?></label>
+            <div class="controls">
               <input type="text" name="send2friendname" id="send2friendname" class="form-control" />
             </div>
           </div>
-          <div class="form-group">
+          <div class="control-group">
             <label for="send2friendemail" class="col-md-4 control-label"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND_FRIENDS_MAIL'); ?></label>
-            <div class="col-md-4">
+            <div class="controls">
               <input type="text" name="send2friendemail" id="send2friendemail" class="form-control" />
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-md-offset-4 col-md-8">
+          <div class="control-group">
+            <div class="controls">
               <input type="button" name="send" value="<?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND_SEND_EMAIL'); ?>" class="btn btn-primary" onclick="joom_validatesend2friend()" />
             </div>
           </div>

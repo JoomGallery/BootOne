@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.'); ?>
   <div class="jg_category">
 <?php if($this->_config->get('jg_showcathead')): ?>
-    <div class="well well-sm">
+    <div class="well well-small">
 <?php if($this->params->get('show_feed_icon')): ?>
       <div class="jg_feed_icon">
         <a href="<?php echo $this->params->get('feed_url'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPTEXT', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPCAPTION', true); ?>>

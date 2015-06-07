@@ -7,8 +7,8 @@
     <?php JHTML::_('joomgallery.toplistbar'); ?>
   </div>
 <?php endif; ?>
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row-fluid">
+    <div class="span6">
  <?php if($displayData->params->get('show_rmsm_legend', 0)): ?>
       <div class="text-muted">
         <?php echo JHtml::_('joomgallery.icon', 'group_key.png', 'COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'); ?>
@@ -24,10 +24,10 @@
       </ul>
 <?php endif; ?>
     </div>
-    <div class="col-md-6">
+    <div class="span6">
 <?php if($displayData->params->get('show_footer_allpics', 0) || $displayData->params->get('show_footer_allhits', 0)): ?>
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="row-fluid">
+        <div class="span12">
 <?php   if($displayData->params->get('show_footer_allpics', 0)): ?>
           <p class="text-right"><?php echo JText::sprintf('COM_JOOMGALLERY_COMMON_NUMB_IMAGES_ALL_CATEGORIES', '<span class="badge">'.$displayData->numberofpics.'</span>'); ?></p>
 <?php   endif;
@@ -38,8 +38,8 @@
       </div>
 <?php endif;
       if($displayData->params->get('show_footer_search', 0)): ?>
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="row-fluid">
+        <div class="span12">
           <form action="<?php echo JRoute::_('index.php?view=search'); ?>" method="post" class="navbar-search pull-right">
             <input type="text" name="sstring" class="search-query form-control" onblur="if(this.value=='') this.value='<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true) ;?>';" onfocus="if(this.value=='<?php echo  JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true) ;?>') this.value='';" value="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH') ;?>" />
           </form>

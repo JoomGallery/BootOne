@@ -19,7 +19,7 @@
 <?php endif; ?>
 <div class="jg_subcat">
 <?php if($this->_config->get('jg_showsubcathead')): ?>
-    <div class="well well-sm">
+    <div class="well well-small">
 <?php if($this->params->get('show_feed_icon')): ?>
       <div class="jg_feed_icon">
         <a href="<?php echo $this->params->get('feed_url'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_CATEGORY_FEED_SUBCATEGORIES_TIPTEXT', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPCAPTION', true); ?>>
@@ -45,10 +45,10 @@
       $index     = 0;
       $this->i   = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
-    <div class="row">
+    <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $this->_config->get('jg_colsubcat')) && ($index < $cat_count); $col_count++):
           $row = $this->categories[$index]; ?>
-      <div class="col-md-3">
+      <li class="span3">
         <div class="thumbnail">
 <?php     if($this->_config->get('jg_showsubthumbs') && $row->thumb_src): ?>
           <a title="<?php echo $row->name; ?>" href="<?php echo $row->link; ?>">
@@ -126,10 +126,10 @@
             </ul>
           </div>
         </div>
-      </div>
+      </li>
 <?php     $index++;
         endfor; ?>
-    </div>
+    </ul>
 <?php endfor;
       if($this->params->get('show_count_cat_bottom')): ?>
   <div class="jg-counts">

@@ -1,11 +1,11 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
-  <div class="panel panel-default">
-    <div class="panel-heading"><?php echo $this->output('DOWNLOAD'); ?></div>
-    <div class="panel-body">
+  <div class="accordion-group">
+    <div class="accordion-heading"><?php echo $this->output('DOWNLOAD'); ?></div>
+    <div class="accordion-inner">
       <a href="<?php echo $this->zipname; ?>">
         <?php echo JText::_('COM_JOOMGALLERY_DOWNLOADZIP_DOWNLOAD_READY'); ?>
-        <span class="glyphicon glyphicon-download"></span>
+        <span class="icon icon-download"></span>
       </a>
       <div><?php echo JText::sprintf('COM_JOOMGALLERY_DOWNLOADZIP_FILESIZE', $this->zipsize); ?></div>
     </div>

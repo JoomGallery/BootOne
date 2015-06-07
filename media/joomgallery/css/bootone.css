@@ -58,3 +58,12 @@
 .jg-minis{
   margin:5px 0;
 }
+
+.jg-bootone .thumbnails {
+  margin-bottom:0;
+}
+.jg-bootone .thumbnail > a > img{
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+}

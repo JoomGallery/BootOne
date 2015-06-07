@@ -4,7 +4,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <a name="gallery"></a>
 <?php endif;
       if($this->_config->get('jg_showallcathead')): ?>
-  <div class="well well-sm">
+  <div class="well well-small">
     <?php echo JText::_('COM_JOOMGALLERY_COMMON_CATEGORIES'); ?>
   </div>
 <?php endif;
@@ -27,11 +27,11 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
       $index    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++):?>
-  <div class="row">
+  <ul class="thumbnails">
 <?php   for($col_count = 0; (($col_count < $this->_config->get('jg_colcat')) && ($index < count($this->rows))); $col_count++):
           $row = $this->rows[$index]; ?>
 
-    <div class="col-md-6">
+    <li class="span6">
       <div class="thumbnail">
 <?php     if($row->thumb_src): ?>
         <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
@@ -114,10 +114,10 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             JHTML::_('joomgallery.categorytree', $row->cid, $row->textcontainer);
           endif; ?>
       </div>
-    </div>
+    </li>
 <?php     $index++;
         endfor; ?>
-  </div>
+  </ul>
 <?php   $this->i++;
       endfor;
       if($this->params->get('show_count_bottom')): ?>

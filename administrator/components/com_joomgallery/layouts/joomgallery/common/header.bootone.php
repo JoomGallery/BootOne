@@ -21,8 +21,8 @@
     <?php echo $displayData->pathway; ?>
   </div>
 <?php endif; ?>
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row-fluid">
+    <div class="span6">
 <?php if($displayData->params->get('show_header_backlink')): ?>
       <ul class="pager">
         <li class="previous">
@@ -79,10 +79,10 @@
       </div>
 <?php endif; ?>
     </div>
-    <div class="col-md-6">
+    <div class="span6">
 <?php if($displayData->params->get('show_header_search', 0)): ?>
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="row-fluid">
+        <div class="span12">
           <form action="<?php echo JRoute::_('index.php?view=search'); ?>" method="post" class="navbar-search pull-right">
             <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true) ;?>" type="text" name="sstring" class="search-query form-control" onblur="if(this.value=='') this.value='<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true) ;?>';" onfocus="if(this.value=='<?php echo  JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true) ;?>') this.value='';" value="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH') ;?>" />
           </form>
@@ -90,8 +90,8 @@
       </div>
 <?php endif;
       if($displayData->params->get('show_header_allpics', 0) || $displayData->params->get('show_header_allhits', 0)): ?>
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="row-fluid">
+        <div class="span12">
 <?php   if($displayData->params->get('show_header_allpics', 0)): ?>
           <p class="pull-right"><?php echo JText::sprintf('COM_JOOMGALLERY_COMMON_NUMB_IMAGES_ALL_CATEGORIES', '<span class="badge">'.$displayData->numberofpics.'</span>'); ?></p>
 <?php   endif;
