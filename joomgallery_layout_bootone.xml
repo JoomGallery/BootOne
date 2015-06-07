@@ -9,9 +9,11 @@
   <version>1.0 ALPHA</version>
   <description>BootOne: Responsive Layout for JoomGallery</description>
   <fileset>
+    <files folder="administrator/components/com_joomgallery/layouts/joomgallery/common" target="administrator/components/com_joomgallery/layouts/joomgallery/common">
+      <file>footer.bootone.php</file>
+      <file>header.bootone.php</file>
+    </files>
     <files>
-      <file>administrator/components/com_joomgallery/layouts/joomgallery/common/footer.bootone.php</file>
-      <file>administrator/components/com_joomgallery/layouts/joomgallery/common/header.bootone.php</file>
       <file>components/com_joomgallery/views/category/tmpl/bootone.php</file>
       <file>components/com_joomgallery/views/category/tmpl/bootone_head.php</file>
       <file>components/com_joomgallery/views/category/tmpl/bootone_images.php</file>
