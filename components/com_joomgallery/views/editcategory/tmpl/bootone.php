@@ -26,7 +26,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </script>
   <div class="edit">
     <form action = "<?php echo JRoute::_('index.php?task=category.save'.$this->slimitstart); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
-      <div class="btn btn-toolbar">
+      <div class="btn-toolbar">
         <div class="btn-group">
           <button type="button" class="btn btn-primary" onclick="Joomla.submitbutton()">
             <i class="icon-ok"></i> <?php echo JText::_('COM_JOOMGALLERY_COMMON_SAVE'); ?>
@@ -50,8 +50,8 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="editor">
-            <div class="row">
-              <div class="col-md-6">
+            <div class="row-fluid">
+              <div class="span6">
                 <?php echo $this->form->renderField('name'); ?>
                 <?php echo $this->form->renderField('alias'); ?>
                 <?php echo $this->form->renderField('parent_id'); ?>
@@ -59,12 +59,12 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
                 <?php echo $this->form->renderField('ordering'); ?>
 <?php           endif; ?>
               </div>
-              <div class="col-md-6">
+              <div class="span6">
 <?php           if(   $this->_config->get('jg_showcatthumb') >= 2
                    || $this->_config->get('jg_showsubthumbs') == 1
                    || $this->_config->get('jg_showsubthumbs') == 3
                   ) : ?>
-                <div class="form-group">
+                <div class="control-group">
                   <?php echo $this->form->getLabel('thumbnail'); ?>
                   <div class="form-control-static">
                     <?php echo $this->form->getInput('thumbnail'); ?>
@@ -74,7 +74,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php           if($this->_config->get('jg_usercatthumbalign')): ?>
                 <?php echo $this->form->renderField('img_position'); ?>
 <?php           endif; ?>
-                <div class="form-group">
+                <div class="control-group">
                   <?php echo $this->form->getLabel('imagelib'); ?>
                   <div class="form-control-static">
                     <?php echo $this->form->getInput('imagelib'); ?>
@@ -82,15 +82,15 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
+            <div class="row-fluid">
+              <div class="span12">
                 <?php echo $this->form->renderField('description'); ?>
               </div>
             </div>
           </div>
           <div class="tab-pane" id="publishing">
-            <div class="row">
-              <div class="col-md-6">
+            <div class="row-fluid">
+              <div class="span6">
                 <?php echo $this->form->renderField('published'); ?>
                 <?php echo $this->form->renderField('access'); ?>
               </div>

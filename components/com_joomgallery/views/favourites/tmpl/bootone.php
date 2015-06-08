@@ -1,12 +1,12 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
   <div class="jg-bootone-favourites">
-    <div class="well well-sm">
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-8">
+    <div class="well well-small">
+      <div class="row-fluid">
+        <div class="offset2 span8">
           <?php echo $this->output('HEADING'); ?>
         </div>
-        <div class="col-sm-2">
+        <div class="span2">
           <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&task=favourites.removeall'); ?>">
             <?php echo JText::_('COM_JOOMGALLERY_FAVOURITES_REMOVE_ALL'); ?>
           </a>
@@ -14,8 +14,8 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       </div>
     </div>
 <?php if(!$count = count($this->rows)): ?>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row-fluid">
+      <div class="span12">
         <?php echo JHTML::_('joomgallery.icon', 'arrow.png', 'arrow'); ?>
         <?php echo $this->output('NO_IMAGES'); ?>
       </div>
@@ -25,10 +25,10 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       $this->i  = 0;
       $index    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
-    <div class="row">
+    <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $this->_config->get('jg_toplistcols')) && ($index < $count); $col_count++):
           $row = $this->rows[$index]; ?>
-      <div class="col-md-4">
+      <li class="span4">
         <div class="thumbnail">
           <a href="<?php echo $row->link; ?>" <?php echo $row->atagtitle; ?>>
             <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" />
@@ -106,10 +106,10 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             </ul>
           </div>
         </div>
-      </div>
+      </li>
 <?php     $index++;
         endfor; ?>
-    </div>
+    </ul>
 <?php endfor; ?>
   </div>
 <?php echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));

@@ -1,25 +1,25 @@
 <?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
   <div class="jg-bootone-search">
-    <div class="well well-sm">
+    <div class="well well-small">
       <?php echo JText::sprintf('COM_JOOMGALLERY_SEARCH_RESULTS_FOR', '<b>'.$this->sstring.'</b>'); ?>
     </div>
 <?php $count = count($this->rows);
       $num_rows = ceil($count / $this->_config->get('jg_searchcols'));
       $index    = 0;
       if(!$count): ?>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row-fluid">
+      <div class="span12">
         <?php echo JHTML::_('joomgallery.icon', 'arrow.png', 'arrow'); ?>
         <?php echo JText::_('COM_JOOMGALLERY_SEARCH_RESULTS_NO_IMAGES'); ?>
       </div>
     </div>
 <?php endif;
       for($row_count = 0; $row_count < $num_rows; $row_count++ ): ?>
-    <div class="row">
+    <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $this->_config->get('jg_searchcols')) && ($index < $count); $col_count++):
           $row = $this->rows[$index]; ?>
-      <div class="col-md-4">
+      <li class="span4">
         <div class="thumbnail">
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
             <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" />
@@ -125,10 +125,10 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             </ul>
           </div>
         </div>
-      </div>
+      </li>
 <?php     $index++;
         endfor; ?>
-    </div>
+    </ul>
 <?php endfor; ?>
   </div>
 <?php echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));

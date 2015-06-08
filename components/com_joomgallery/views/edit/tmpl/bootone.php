@@ -29,7 +29,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </script>
   <div class="edit">
     <form action = "<?php echo JRoute::_('index.php?task=image.save'.$this->redirect.$this->slimitstart); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
-      <div class="btn btn-toolbar">
+      <div class="btn-toolbar">
         <div class="btn-group">
           <button type="button" class="btn btn-primary" onclick="Joomla.submitbutton()">
             <i class="icon-ok"></i> <?php echo JText::_('COM_JOOMGALLERY_COMMON_SAVE'); ?>
@@ -53,29 +53,29 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="editor">
-            <div class="row">
-              <div class="col-md-6">
+            <div class="row-fluid">
+              <div class="span6">
                 <?php echo $this->form->renderField('imgtitle'); ?>
                 <?php echo $this->form->renderField('alias'); ?>
                 <?php echo $this->form->renderField('catid'); ?>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div class="span6">
+                <div class="control-group">
                   <?php echo $this->form->getLabel('owner'); ?>
                   <div class="form-control-static"><strong><?php echo JHTML::_('joomgallery.displayname', $this->image->owner) ?></strong></div>
                 </div>
                 <?php echo str_replace('img-polaroid', 'thumbnail', preg_replace('/<img .*?>/', '<div class="form-control-static">$0</div>', $this->form->renderField('imagelib'))); ?>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
+            <div class="row-fluid">
+              <div class="span12">
                 <?php echo $this->form->renderField('imgtext'); ?>
               </div>
             </div>
           </div>
           <div class="tab-pane" id="publishing">
-            <div class="row">
-              <div class="col-md-6">
+            <div class="row-fluid">
+              <div class="span6">
                 <?php echo $this->form->renderField('imgauthor'); ?>
                 <?php echo $this->form->renderField('published'); ?>
                 <?php echo $this->form->renderField('access'); ?>
