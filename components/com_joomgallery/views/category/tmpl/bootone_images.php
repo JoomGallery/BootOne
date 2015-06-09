@@ -20,16 +20,15 @@
       if($this->params->get('show_all_in_popup')):
         echo $this->popup['before'];
       endif;
-      $count_pics = count($this->images);$this->_config->set('jg_colnumb', 4);
+      $count_pics = count($this->images);
       $column     = $this->_config->get('jg_colnumb');
       $num_rows   = ceil($count_pics / $column);
       $index      = 0;
-      $this->i    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
   <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $column) && ($index < $count_pics); $col_count++):
           $row = $this->images[$index]; ?>
-      <li class="span3">
+      <li class="span<?php echo (int) (12 / $column); ?>">
 <?php     if(!$row->show_elems): ?>
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>" class="thumbnail">
             <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
@@ -142,9 +141,6 @@
       if($this->params->get('show_all_in_popup')):
         echo $this->popup['after'];
       endif;
-      if($this->_config->get('jg_showcathead')): ?>
-  <div class="well well-small"></div>
-<?php endif;
       if($this->params->get('show_count_img_bottom')): ?>
   <div class="jg-counts">
 <?php   if($this->totalimages == 1): ?>

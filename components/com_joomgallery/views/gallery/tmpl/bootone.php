@@ -8,7 +8,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
     <?php echo JText::_('COM_JOOMGALLERY_COMMON_CATEGORIES'); ?>
   </div>
 <?php endif;
-      if($this->params->get('show_count_top', 0)): ?>
+      if($this->params->get('show_count_top')): ?>
   <div class="jg-counts">
 <?php   if($this->total == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_GALLERY_THERE_IS_ONE_CATEGORY_IN_GALLERY'); ?>
@@ -18,20 +18,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   endif; ?>
   </div>
 <?php endif;
-      if($this->params->get('show_pagination_top', 0)): ?>
+      if($this->params->get('show_pagination_top')): ?>
   <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
 <?php endif;
-      $this->i  = 0;$this->_config->set('jg_colcat', 2);
       $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
       $index    = 0;
-      for($row_count = 0; $row_count < $num_rows; $row_count++):?>
+      for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
   <ul class="thumbnails">
 <?php   for($col_count = 0; (($col_count < $this->_config->get('jg_colcat')) && ($index < count($this->rows))); $col_count++):
           $row = $this->rows[$index]; ?>
-
-    <li class="span6">
+    <li class="span<?php echo (int) (12 / $this->_config->get('jg_colcat')); ?>">
       <div class="thumbnail">
 <?php     if($row->thumb_src): ?>
         <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
@@ -118,8 +116,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php     $index++;
         endfor; ?>
   </ul>
-<?php   $this->i++;
-      endfor;
+<?php endfor;
       if($this->params->get('show_count_bottom')): ?>
   <div class="jg-counts">
 <?php   if($this->total == 1): ?>

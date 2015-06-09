@@ -20,7 +20,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
     <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $this->_config->get('jg_toplistcols')) && ($index < $count); $col_count++):
           $row = $this->rows[$index]; ?>
-      <li class="span4">
+      <li class="span<?php echo (int) (12 / $this->_config->get('jg_toplistcols')); ?>">
         <div class="thumbnail">
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
             <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" />

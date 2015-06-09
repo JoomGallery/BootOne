@@ -37,10 +37,27 @@
 }
 
 .jg-bootone .pager{
-  margin:10px 0 0;
+  margin:10px 0;
 }
 .jg-bootone .pager:first-child{
   margin-top:0;
+}
+.jg-bootone .jg-pager-footer{
+  margin-bottom:0px;
+}
+
+.jg-bootone .navbar-search{
+  margin-bottom:10px;
+}
+.jg-bootone .jg-navbar-search-footer:last-child{
+  margin-bottom:0px;
+}
+
+.jg-toplist-footer{
+  margin-bottom:10px;
+}
+.jg-toplist-footer:last-child{
+  margin-bottom:0;
 }
 
 .jg-iconbar{
@@ -66,4 +83,12 @@
   display:block;
   margin-right:auto;
   margin-left:auto;
+}
+
+.jg-category-description{
+  text-align:center;
+  padding-bottom:5px;
+}
+.jg-category-ordering-controls{
+  margin-bottom:20px;
 }
