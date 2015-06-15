@@ -25,7 +25,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" />
           </a>
           <div class="caption">
-            <ul class="list-unstyled text-center">
+            <ul class="unstyled text-center">
               <li>
                 <h3><?php echo $row->imgtitle; ?></h3>
               </li>

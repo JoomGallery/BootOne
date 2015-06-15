@@ -28,7 +28,7 @@
 <?php if($displayData->params->get('show_footer_allpics') || $displayData->params->get('show_footer_allhits')): ?>
       <div class="row-fluid">
         <div class="span12">
-          <ul class="list-unstyled text-right jg-gallerystats jg-gallerystats-footer">
+          <ul class="unstyled text-right jg-gallerystats jg-gallerystats-footer">
 <?php   if($displayData->params->get('show_footer_allpics')): ?>
             <li class="jg-gallerystats-count"><?php echo JText::sprintf('COM_JOOMGALLERY_COMMON_NUMB_IMAGES_ALL_CATEGORIES', '<span class="badge">'.$displayData->numberofpics.'</span>'); ?></li>
 <?php   endif;
@@ -41,7 +41,7 @@
 <?php endif;
       if($displayData->params->get('show_footer_search')): ?>
       <form action="<?php echo JRoute::_('index.php?view=search'); ?>" method="post" class="navbar-search jg-navbar-search-footer pull-right">
-        <label for="jg-search-box-footer" class="sr-only"><?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?></label>
+        <label for="jg-search-box-footer" class="sr-only hidden"><?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?></label>
         <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" type="text" name="sstring" id="jg-search-box-footer" class="search-query form-control" onblur="if(this.value=='') this.value='<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true); ?>';" onfocus="if(this.value=='<?php echo  JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true); ?>') this.value='';" value="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" placeholder="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" />
       </form>
 <?php endif; ?>

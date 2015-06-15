@@ -82,7 +82,7 @@ JHtml::register('joomgallery.tip', array('JHtmlJoomGalleryBootone', 'tip'));
       </ul>
 <?php endif;
       if($displayData->params->get('show_mygal') || $displayData->params->get('show_mygal_no_access') || $displayData->params->get('show_favourites')): ?>
-      <ul class="list-unstyled jg-links-header">
+      <ul class="unstyled jg-links-header">
 <?php    if($displayData->params->get('show_mygal')): ?>
         <li class="jg-userpanel-link">
           <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=userpanel'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_USER_PANEL', null, true); ?>">
@@ -134,14 +134,14 @@ JHtml::register('joomgallery.tip', array('JHtmlJoomGalleryBootone', 'tip'));
     <div class="span6">
 <?php if($displayData->params->get('show_header_search')): ?>
       <form action="<?php echo JRoute::_('index.php?view=search'); ?>" method="post" class="navbar-search pull-right">
-        <label for="jg-search-box" class="sr-only"><?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?></label>
+        <label for="jg-search-box" class="sr-only hidden"><?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?></label>
         <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" type="text" name="sstring" id="jg-search-box" class="search-query form-control" onblur="if(this.value=='') this.value='<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true); ?>';" onfocus="if(this.value=='<?php echo  JText::_('COM_JOOMGALLERY_COMMON_SEARCH', true); ?>') this.value='';" value="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" placeholder="<?php echo JText::_('COM_JOOMGALLERY_COMMON_SEARCH'); ?>" />
       </form>
 <?php endif;
       if($displayData->params->get('show_header_allpics', 1) || $displayData->params->get('show_header_allhits', 0)): ?>
       <div class="row-fluid">
         <div class="span12">
-          <ul class="list-unstyled text-right jg-gallerystats">
+          <ul class="unstyled text-right jg-gallerystats">
 <?php   if($displayData->params->get('show_header_allpics')): ?>
             <li class="jg-gallerystats-count"><?php echo JText::sprintf('COM_JOOMGALLERY_COMMON_NUMB_IMAGES_ALL_CATEGORIES', '<span class="badge">'.$displayData->numberofpics.'</span>'); ?></li>
 <?php   endif;

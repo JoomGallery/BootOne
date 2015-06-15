@@ -37,7 +37,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         </a>
 <?php     endif; ?>
       <div class="caption">
-        <ul class="list-unstyled">
+        <ul class="unstyled">
           <li>
 <?php     if(in_array($row->access, $this->_user->getAuthorisedViewLevels())): ?>
             <a href="<?php echo $row->link; ?>">

@@ -173,24 +173,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif; ?>
       <?php echo $this->event->icons; ?>
     </div>
-    <div class="visible-phone span3 text-center">
-<?php if($this->params->get('show_previous_link')): ?>
-<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
-      <form  name="form_jg_back_link" action="<?php echo $this->pagination['previous']['link']; ?>">
-        <input type="hidden" name="jg_back_link" readonly="readonly" />
-      </form>
-<?php   endif;?>
-      <ul class="pager">
-        <li><a href="<?php echo $this->pagination['previous']['link']; ?>">
-          &larr; <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_PREVIOUS'); ?></a>
-        </li>
-      </ul>
-<?php   if($this->params->get('show_previous_text')): ?>
-      <?php echo $this->pagination['previous']['text']; ?>
-<?php   endif;
-      endif; ?>
-    </div>
-    <div class="col-xs-6 span3 text-center">
+    <div class="hidden-phone span3 text-center">
 <?php if($this->params->get('show_next_link')): ?>
 <?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
       <form name="form_jg_forward_link" action="<?php echo $this->pagination['next']['link']; ?>">
@@ -208,6 +191,44 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       endif; ?>
     </div>
   </div>
+<?php if($this->params->get('show_previous_link') || $this->params->get('show_next_link')): ?>
+  <div class="row-fluid visible-phone jg-detail-navigation">
+    <div class="span6 text-center jg-detail-previous-link">
+<?php if($this->params->get('show_previous_link')): ?>
+<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
+      <form  name="form_jg_back_link" action="<?php echo $this->pagination['previous']['link']; ?>">
+        <input type="hidden" name="jg_back_link" readonly="readonly" />
+      </form>
+<?php   endif;?>
+      <ul class="pager">
+        <li><a href="<?php echo $this->pagination['previous']['link']; ?>">
+          &larr; <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_PREVIOUS'); ?></a>
+        </li>
+      </ul>
+<?php   if($this->params->get('show_previous_text')): ?>
+      <?php echo $this->pagination['previous']['text']; ?>
+<?php   endif;
+      endif; ?>
+    </div>
+    <div class="span6 text-center jg-detail-next-link">
+<?php if($this->params->get('show_next_link')): ?>
+<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
+      <form name="form_jg_forward_link" action="<?php echo $this->pagination['next']['link']; ?>">
+        <input type="hidden" name="jg_forward_link" readonly="readonly" />
+      </form>
+<?php   endif;?>
+      <ul class="pager">
+        <li><a href="<?php echo $this->pagination['next']['link']; ?>">
+          <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_NEXT'); ?> &rarr; </a>
+        </li>
+      </ul>
+<?php   if($this->params->get('show_next_text')): ?>
+      <?php echo $this->pagination['next']['text']; ?>
+<?php   endif;
+      endif; ?>
+    </div>
+  </div>
+<?php endif; ?>
 <?php if($this->params->get('show_all_in_popup')):
         echo $this->popup['after'];
       endif;
