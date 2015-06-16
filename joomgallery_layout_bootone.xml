@@ -37,8 +37,6 @@
       <file>components/com_joomgallery/views/toplist/tmpl/bootone.xml</file>
       <file>components/com_joomgallery/views/upload/tmpl/bootone.php</file>
       <file>components/com_joomgallery/views/upload/tmpl/bootone.xml</file>
-      <file>components/com_joomgallery/views/upload/tmpl/bootone_ajax.php</file>
-      <file>components/com_joomgallery/views/upload/tmpl/bootone_single.php</file>
       <file>components/com_joomgallery/views/usercategories/tmpl/bootone.php</file>
       <file>components/com_joomgallery/views/usercategories/tmpl/bootone.xml</file>
       <file>components/com_joomgallery/views/userpanel/tmpl/bootone.php</file>
