@@ -20,6 +20,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         <?php echo $this->output('NO_IMAGES'); ?>
       </div>
     </div>
+    <div class="row-fluid jg-thumbnails-area">
 <?php endif;
       $num_rows = ceil($count / $this->_config->get('jg_toplistcols'));
       $index    = 0;
@@ -110,5 +111,6 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         endfor; ?>
     </ul>
 <?php endfor; ?>
+    </div>
   </div>
 <?php echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));

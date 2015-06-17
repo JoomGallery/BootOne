@@ -22,6 +22,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
+  <div class="row-fluid jg-thumbnails-area">
 <?php endif;
       $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
       $index    = 0;
@@ -116,8 +117,9 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php     $index++;
         endfor; ?>
   </ul>
-<?php endfor;
-      if($this->params->get('show_count_bottom')): ?>
+<?php endfor; ?>
+  </div>
+<?php if($this->params->get('show_count_bottom')): ?>
   <div class="jg-counts">
 <?php   if($this->total == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_GALLERY_THERE_IS_ONE_CATEGORY_IN_GALLERY'); ?>

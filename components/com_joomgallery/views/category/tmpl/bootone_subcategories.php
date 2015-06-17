@@ -41,6 +41,7 @@
         </div>
       </div>
     </div>
+    <div class="row-fluid jg-thumbnails-area">
 <?php endif;
       $cat_count = count($this->categories);
       $num_rows  = ceil($cat_count / $this->_config->get('jg_colsubcat'));
@@ -131,8 +132,9 @@
 <?php     $index++;
         endfor; ?>
     </ul>
-<?php endfor;
-      if($this->params->get('show_count_cat_bottom')): ?>
+<?php endfor; ?>
+    </div>
+<?php if($this->params->get('show_count_cat_bottom')): ?>
   <div class="jg-counts">
 <?php   if($this->totalcategories == 1): ?>
     <?php echo JText::_('COM_JOOMGALLERY_CATEGORY_THERE_IS_ONE_SUBCATEGORY_IN_CATEGORY'); ?>

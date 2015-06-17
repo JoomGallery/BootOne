@@ -16,6 +16,7 @@
   <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
+  <div class="row-fluid jg-thumbnails-area">
 <?php endif;
       if($this->params->get('show_all_in_popup')):
         echo $this->popup['before'];
@@ -25,7 +26,7 @@
       $num_rows   = ceil($count_pics / $column);
       $index      = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
-  <ul class="thumbnails">
+    <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $column) && ($index < $count_pics); $col_count++):
           $row = $this->images[$index]; ?>
       <li class="span<?php echo (int) (12 / $column); ?>">
@@ -136,9 +137,10 @@
       </li>
 <?php     $index++;
         endfor; ?>
-  </ul>
-<?php endfor;
-      if($this->params->get('show_all_in_popup')):
+    </ul>
+<?php endfor; ?>
+  </div>
+<?php if($this->params->get('show_all_in_popup')):
         echo $this->popup['after'];
       endif;
       if($this->params->get('show_count_img_bottom')): ?>

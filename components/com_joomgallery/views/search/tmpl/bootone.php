@@ -14,8 +14,9 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         <?php echo JText::_('COM_JOOMGALLERY_SEARCH_RESULTS_NO_IMAGES'); ?>
       </div>
     </div>
-<?php endif;
-      for($row_count = 0; $row_count < $num_rows; $row_count++ ): ?>
+<?php endif; ?>
+    <div class="row-fluid jg-thumbnails-area">
+<?php for($row_count = 0; $row_count < $num_rows; $row_count++ ): ?>
     <ul class="thumbnails">
 <?php   for($col_count = 0; ($col_count < $this->_config->get('jg_searchcols')) && ($index < $count); $col_count++):
           $row = $this->rows[$index]; ?>
@@ -130,5 +131,6 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         endfor; ?>
     </ul>
 <?php endfor; ?>
+    </div>
   </div>
 <?php echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));
