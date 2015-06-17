@@ -20,9 +20,9 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         <?php echo $this->output('NO_IMAGES'); ?>
       </div>
     </div>
+<?php endif; ?>
     <div class="row-fluid jg-thumbnails-area">
-<?php endif;
-      $num_rows = ceil($count / $this->_config->get('jg_toplistcols'));
+<?php $num_rows = ceil($count / $this->_config->get('jg_toplistcols'));
       $index    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
     <ul class="thumbnails">

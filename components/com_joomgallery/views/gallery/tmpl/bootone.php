@@ -22,9 +22,9 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
+<?php endif; ?>
   <div class="row-fluid jg-thumbnails-area">
-<?php endif;
-      $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
+<?php $num_rows = ceil(count($this->rows ) / $this->_config->get('jg_colcat'));
       $index    = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
   <ul class="thumbnails">

@@ -16,12 +16,12 @@
   <div class="pagination">
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
-  <div class="row-fluid jg-thumbnails-area">
 <?php endif;
       if($this->params->get('show_all_in_popup')):
         echo $this->popup['before'];
-      endif;
-      $count_pics = count($this->images);
+      endif; ?>
+  <div class="row-fluid jg-thumbnails-area">
+<?php $count_pics = count($this->images);
       $column     = $this->_config->get('jg_colnumb');
       $num_rows   = ceil($count_pics / $column);
       $index      = 0;

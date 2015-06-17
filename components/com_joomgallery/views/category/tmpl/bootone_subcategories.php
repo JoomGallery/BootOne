@@ -41,9 +41,9 @@
         </div>
       </div>
     </div>
+<?php endif; ?>
     <div class="row-fluid jg-thumbnails-area">
-<?php endif;
-      $cat_count = count($this->categories);
+<?php $cat_count = count($this->categories);
       $num_rows  = ceil($cat_count / $this->_config->get('jg_colsubcat'));
       $index     = 0;
       for($row_count = 0; $row_count < $num_rows; $row_count++): ?>
