@@ -83,3 +83,15 @@
 .jg-category-ordering-controls{
   margin-bottom:20px;
 }
+
+#jg_voting div.controls, #jg_voting label, #jg_voting .controls > .radio:first-child{
+  display:inline-block;
+  vertical-align:middle;
+  padding-top: 0px;
+}
+
+.jg_spinner{
+  background-image:url(../../system/images/modal/spinner.gif) !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+}

@@ -13,7 +13,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <a name="joomimg"></a>
 <?php if($this->_config->get('jg_showdetailtitle') == 1): ?>
   <div>
-    <h3 id="jg_photo_title">
+    <h3 class="text-center" id="jg_photo_title">
       <?php echo $this->escape($this->image->imgtitle); ?>
     </h3>
   </div>
@@ -220,7 +220,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif;
       if($this->_config->get('jg_showdetailtitle') == 2): ?>
   <div>
-    <h3 class="jg_imgtitle" id="jg_photo_title">
+    <h3 class="text-center" id="jg_photo_title">
       <?php echo $this->escape($this->image->imgtitle); ?>
     </h3>
   </div>
@@ -445,7 +445,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Voting'); ?>>
 <?php   endif; ?>
-      <div class="panel-body">
+      <div class="panel-body text-center">
 <?php   if($this->params->get('voting_message')): ?>
         <?php echo $this->params->get('voting_message'); ?>
 <?php   endif;
