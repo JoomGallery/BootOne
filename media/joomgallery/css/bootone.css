@@ -72,7 +72,7 @@
   margin:5px 0;
 }
 
-.jg-bootone .thumbnails {
+.jg-bootone .thumbnails{
   margin-bottom:0;
 }
 .jg-bootone .thumbnail > a > img{
@@ -96,4 +96,16 @@
 .jg-detail-next-link{
   float:right !important;
   width:50% !important;
+}
+
+#jg_voting div.controls, #jg_voting label, #jg_voting .controls > .radio:first-child{
+  display:inline-block;
+  vertical-align:middle;
+  padding-top: 0px;
+}
+
+.jg_spinner{
+  background-image:url(../../system/images/modal/spinner.gif) !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;  
 }
