@@ -13,7 +13,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <a name="joomimg"></a>
 <?php if($this->_config->get('jg_showdetailtitle') == 1): ?>
   <div>
-    <h3 id="jg_photo_title">
+    <h3 class="text-center" id="jg_photo_title">
       <?php echo $this->escape($this->image->imgtitle); ?>
     </h3>
   </div>
@@ -258,7 +258,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php endif;
       if($this->_config->get('jg_showdetailtitle') == 2): ?>
   <div>
-    <h3 class="jg_imgtitle" id="jg_photo_title">
+    <h3 class="text-center" id="jg_photo_title">
       <?php echo $this->escape($this->image->imgtitle); ?>
     </h3>
   </div>
@@ -483,7 +483,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Voting'); ?>>
 <?php   endif; ?>
-      <div class="accordion-inner">
+      <div class="accordion-inner text-center">
 <?php   if($this->params->get('voting_message')): ?>
         <?php echo $this->params->get('voting_message'); ?>
 <?php   endif;
@@ -604,7 +604,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             <div class="span3">
             <?php echo $this->_user->get('username'); ?>
 <?php     if(!$this->_user->get('id') && $this->_config->get('jg_namedanoncomment')): ?>
-              <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_GUEST'); ?>" type="text" class="form-control" name="cmtname" value="<?php echo $this->_mainframe->getUserState('joom.comments.name', JText::_('COM_JOOMGALLERY_COMMON_GUEST')); ?>" tabindex="1" />
+              <input title="<?php echo JText::_('COM_JOOMGALLERY_COMMON_GUEST'); ?>" type="text" class="form-control input-small" name="cmtname" value="<?php echo $this->_mainframe->getUserState('joom.comments.name', JText::_('COM_JOOMGALLERY_COMMON_GUEST')); ?>" tabindex="1" />
 <?php     endif; ?>
               <div class="help-block">
 <?php     if($this->params->get('smiley_support')): ?>
