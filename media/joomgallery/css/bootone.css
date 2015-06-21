@@ -109,3 +109,7 @@
   background-repeat:no-repeat !important;
   background-position:center !important;  
 }
+
+.jg_starrating_cat, .jg_starrating_fav, .jg_starrating_top, .jg_starrating_search{
+	margin:0 auto;
+}
