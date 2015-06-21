@@ -36,7 +36,7 @@
         <div class="thumbnail">
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
             <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
-          <div class="caption jg_catelem_txt">
+          <div class="caption">
             <ul class="list-unstyled text-center">
 <?php     if($this->_config->get('jg_showtitle') || ($this->_config->get('jg_showpicasnew') && $row->isnew)): ?>
               <li>
@@ -156,3 +156,4 @@
     <?php echo $this->pagination->getPagesLinks(); ?>
   </div>
 <?php endif;
+
