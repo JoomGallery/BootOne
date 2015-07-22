@@ -418,9 +418,6 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <?php else: ?>
       <h4 class="panel-title"><?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?></h4>
       <?php endif; ?>
-      <h4  <?php echo sprintf($this->toggler, 'IPTC'); ?>>
-        <?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?>
-      </h4>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'IPTC'); ?>>
