@@ -418,7 +418,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <?php if(!empty($this->toggler)): ?>
       <?php   echo sprintf($this->toggler, 'Map', JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING')); ?>
       <?php else: ?>
-      <h4 class="accordion-toggle"><?php echo JText::_(COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING); ?></h4>
+      <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING'); ?></h4>
       <?php endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
