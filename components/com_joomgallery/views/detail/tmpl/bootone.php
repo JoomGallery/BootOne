@@ -58,18 +58,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   <div class="hidden" id="jg-slideshow-controls">
 <?php   if(!$this->slideshow): ?>
     <a href="javascript:joom_startslideshow()"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_START', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW', true); ?>>
-      <?php echo JHTML::_('joomgallery.icon', 'control_play.png', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_START'); ?></a>
+      <span class="icon-play-circle"></span></a>
     <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_STOP', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW', true); ?>>
-      <?php echo JHTML::_('joomgallery.icon', 'control_stop_gr.png', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION'); ?>
+        <span class="icon-stop-circle"></span>
     </span>
 <?php   endif;
         if($this->slideshow): ?>
     <a href="javascript:joom_slideshow.clearTimer()" id="jg_pause"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_PAUSE', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW', true); ?>>
-      <?php echo JHTML::_('joomgallery.icon', 'control_pause.png', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_PAUSE'); ?></a>
+        <span class="icon-pause-circle"></span></a>
     <a href="javascript:joom_slideshow.nextItem();joom_slideshow.prepareTimer();" id="jg_goon">
-      <?php echo JHTML::_('joomgallery.icon', 'control_play.png', 'COM_JOOMGALLERY_GOON'); ?></a>
+        <span class="icon-play-circle"></span></a>
     <a href="javascript:joom_stopslideshow()"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_STOP', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW', true); ?>>
-      <?php echo JHTML::_('joomgallery.icon', 'control_stop.png', 'COM_JOOMGALLERY_DETAIL_SLIDESHOW_STOP'); ?></a>
+        <span class="icon-stop-circle"></span></a>
 <?php   endif; ?>
   </div>
   <div class="text-center text-muted small" id="jg-slideshow-noscript">
@@ -100,76 +100,76 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
     </div>
     <div class="span6 jg-iconbar text-center">
 <?php if($this->params->get('show_zoom_icon') == 1): ?>
-      <a <?php echo $this->image->atagtitle; ?> href="<?php echo $this->params->get('image_linked') ? JHtml::_('joomgallery.openimage', $this->_config->get('jg_bigpic_open'), $this->image, false, 'joomgalleryIcon') : $this->image->link; ?>"<?php //echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'zoom.png', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION'); ?></a>
+      <a <?php echo $this->image->atagtitle; ?> href="<?php echo $this->params->get('image_linked') ? JHtml::_('joomgallery.openimage', $this->_config->get('jg_bigpic_open'), $this->image, false, 'joomgalleryIcon') : $this->image->link; ?>">
+        <span class="icon-zoom-in"></span></a>
 <?php endif;
       if($this->params->get('show_zoom_icon') == -1): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_LOGIN_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'zoom_gr.png', 'COM_JOOMGALLERY_DETAIL_IMG_FULLSIZE_TIPCAPTION'); ?>
+        <span class="icon-zoom-in"></span>
       </span>
 <?php endif;
       if($this->params->get('show_download_icon') == 1): ?>
       <a href="<?php echo $this->params->get('download_link'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'download.png', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION'); ?></a>
+        <span class="icon-download"></span></a>
 <?php endif;
       if($this->params->get('show_download_icon') == -1): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_LOGIN_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'download_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION'); ?>
+        <span class="icon-download"></span>
       </span>
 <?php endif;
       if($this->params->get('show_nametag_icon') == 1): ?>
       <a href="javascript:joom_getcoordinates();"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'tag_add.png', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_TIPCAPTION'); ?></a>
+        <span class="icon-tag-2"></span></a>
 <?php endif;
       if($this->params->get('show_nametag_icon') == 2): ?>
       <a href="javascript:if(confirm('<?php echo JText::_('COM_JOOMGALLERY_DETAIL_NAMETAGS_ALERT_SURE_DELETE', true); ?>')){ location.href='<?php echo $this->params->get('nametag_link'); ?>';}"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_DELETE_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_DELETE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'tag_delete.png', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_DELETE_TIPCAPTION'); ?></a>
+        <span class="icon-tag-2"></span></a>
 <?php endif;
       if($this->params->get('show_nametag_icon') == 3):
         JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
       <a href="<?php echo JRoute::_('index.php?view=nametag&tmpl=component'); ?>" class="jg-bootone-modal<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_SELECT_OTHERS_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_SELECT_OTHERS_TIPCAPTION'); ?>" rel="{handler:'iframe', size:{x:350,y:180}}">
-        <?php echo JHTML::_('joomgallery.icon', 'tag_edit.png', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_SELECT_OTHERS_TIPCAPTION'); ?></a>
+        <span class="icon-tag-2"></span></a>
 <?php endif;
       if($this->params->get('show_nametag_icon') == -1): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_UNREGISTERED_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_UNREGISTERED_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'tag_add_gr.png', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_UNREGISTERED_TIPCAPTION'); ?>
+        <span class="icon-tag-2"></span>
       </span>
 <?php endif;
       if($this->params->get('show_favourites_icon') == 1): ?>
       <a href="<?php echo $this->params->get('favourites_link'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'star.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION'); ?></a>
+        <span class="icon-star"></span></a>
 <?php endif;
       if($this->params->get('show_favourites_icon') == -1): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'star_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION'); ?>
+        <span class="icon-star-empty"></span>
       </span>
 <?php endif;
       if($this->params->get('show_favourites_icon') == 2): ?>
       <a href="<?php echo $this->params->get('favourites_link'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'basket_put.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION'); ?></a>
+        <span class="icon-star"></span></a>
 <?php endif;
       if($this->params->get('show_favourites_icon') == -2): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'basket_put_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION'); ?>
+        <span class="icon-star-empty"></span>
       </span>
 <?php endif;
       if($this->params->get('show_report_icon') == 1):
         JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
       <a href="<?php echo JRoute::_('index.php?view=report&id='.$this->image->id.'&tmpl=component'); ?>" class="jg-bootone-modal<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?>" rel="{handler:'iframe'}"><!--, size:{x:200,y:100}-->
-        <?php echo JHTML::_('joomgallery.icon', 'exclamation.png', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?></a>
+        <span class="icon-notification-circle"></span></a>
 <?php endif;
       if($this->params->get('show_report_icon') == -1): ?>
       <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'exclamation_gr.png', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?>
+        <span class="icon-notification-circle"></span>
       </span>
 <?php endif; ?>
 <?php if($this->params->get('show_edit_icon')) : ?>
       <a href="<?php echo JRoute::_('index.php?view=edit&id='.$this->image->id.$this->redirect); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?></a>
+        <span class="icon-edit"></span></a>
 <?php endif;
       if($this->params->get('show_delete_icon')): ?>
       <a href="javascript:if(confirm('<?php echo JText::_('COM_JOOMGALLERY_COMMON_ALERT_SURE_DELETE_SELECTED_ITEM', true); ?>')){ location.href='<?php echo JRoute::_('index.php?task=image.delete&id='.$this->image->id, false);?>';}"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION', true); ?>>
-        <?php echo JHTML::_('joomgallery.icon', 'edit_trash.png', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION'); ?></a>
+        <span class="icon-delete"></span></a>
 <?php endif; ?>
       <?php echo $this->event->icons; ?>
     </div>
@@ -732,7 +732,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
   </div>
 <?php if($this->params->get('show_nametags')): ?>
   <a id="jg-movable-nametag-icon" href="javascript:joom_getcoordinates();" class="jg_displaynone<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_OTHERS_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_OTHERS_TIPCAPTION'); ?>">
-    <?php echo JHTML::_('joomgallery.icon', 'tag_add.png', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_OTHERS_TIPCAPTION'); ?>
+    <span class="icon-tag-2"></span>
   </a>
   <span id="jg-tooltip-helper" class="jg_displaynone<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_DELETE_OTHERS_TIPTEXT', 'COM_JOOMGALLERY_DETAIL_NAMETAGS_DELETE_OTHERS_TIPCAPTION'); ?>">&nbsp;</span>
   <script type="text/javascript">

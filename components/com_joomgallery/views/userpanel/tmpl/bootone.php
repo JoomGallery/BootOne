@@ -190,20 +190,20 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php       if($item->show_edit_icon): ?>
             <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?>">
               <a href="<?php echo JRoute::_('index.php?view=edit&id='.$item->id.$this->slimitstart); ?>">
-                <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPCAPTION'); ?></a>
+                <span class="icon-edit"></span></a>
             </div>
 <?php       endif;
             if($item->show_delete_icon): ?>
             <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION'); ?>">
               <a href="javascript:if(confirm('<?php echo JText::_('COM_JOOMGALLERY_COMMON_ALERT_SURE_DELETE_SELECTED_ITEM', true); ?>')){ location.href='<?php echo JRoute::_('index.php?task=image.delete&id='.$item->id.$this->slimitstart, false);?>';}">
-                <?php echo JHTML::_('joomgallery.icon', 'edit_trash.png', 'COM_JOOMGALLERY_COMMON_DELETE'); ?></a>
+                <span class="icon-delete"></span></a>
             </div>
 <?php       endif; ?>
           </td>
           <td class="nowrap center">
-<?php       $p_img    = 'cross';
+<?php       $p_img = 'icon-unpublish';
             if($item->published):
-              $p_img = 'tick';
+              $p_img = 'icon-publish';
             endif; ?>
 <?php       if($canChange):
               $p_title  = JText::_('COM_JOOMGALLERY_COMMON_PUBLISH_IMAGE_TIPCAPTION');
@@ -213,14 +213,14 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
                 $p_text  = JText::_('COM_JOOMGALLERY_COMMON_UNPUBLISH_IMAGE_TIPTEXT');
               endif; ?>
             <a href="<?php echo JRoute::_('index.php?task=image.publish&id='.$item->id.$this->slimitstart); ?>"<?php echo JHTML::_('joomgallery.tip', $p_text, $p_title, true, false); ?>>
-              <?php echo JHTML::_('joomgallery.icon', $p_img.'.png', $p_img, null, null, false); ?></a>
+              <span class="<?php echo $p_img; ?>"></span></a>
 <?php       else:
               $p_title  = JText::_('COM_JOOMGALLERY_COMMON_UNPUBLISHED');
               if($item->published):
                 $p_title = JText::_('COM_JOOMGALLERY_COMMON_PUBLISHED');
               endif; ?>
             <div class="<?php echo JHTML::_('joomgallery.tip', '', $p_title); ?>">
-              <?php echo JHTML::_('joomgallery.icon', $p_img.'.png', $p_img, null, null, false); ?>
+              <span class="<?php echo $p_img; ?>"></span>
             </div>
 <?php       endif;
             if($item->published && $item->hidden):
@@ -232,14 +232,14 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
           </td>
 <?php     if($this->_config->get('jg_approve')): ?>
           <td class="nowrap center">
-<?php       $a_img = 'cross';
+<?php       $a_img = 'icon-unpublish';
             $a_title = 'COM_JOOMGALLERY_COMMON_REJECTED';
             if($item->approved == 1):
-              $a_img = 'tick';
+              $a_img = 'icon-publish';
               $a_title = 'COM_JOOMGALLERY_COMMON_APPROVED';
             endif; ?>
             <div class="<?php echo JHTML::_('joomgallery.tip', '', $a_title); ?>">
-              <?php echo JHTML::_('joomgallery.icon', $a_img.'.png', $a_img, null, null, false); ?>
+              <span class="<?php echo $a_img; ?>"></span>
             </div>
           </td>
 <?php     endif?>
