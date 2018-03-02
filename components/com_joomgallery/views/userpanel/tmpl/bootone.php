@@ -8,6 +8,7 @@ $listOrder                = $this->escape($this->state->get('list.ordering'));
 $listDirn                 = $this->escape($this->state->get('list.direction'));
 $saveOrder                = (($listOrder == 'ordering') && (strtoupper($listDirn) == 'ASC' || !$listDirn) && !$this->state->get('filter.inuse'));
 $display_hidden_asterisk  = false;
+$editingforms             = "";
 
 if($saveOrder):
   $saveOrderingUrl = 'index.php?option='._JOOM_OPTION.'&task=images.saveorder&format=json';
@@ -188,10 +189,18 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
           </td>
           <td class="nowrap">
 <?php       if($item->show_edit_icon): ?>
-            <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?>">
-              <a href="<?php echo JRoute::_('index.php?view=edit&id='.$item->id.$this->slimitstart); ?>">
-                <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPCAPTION'); ?></a>
-            </div>
+              <div class="pull-left jg-show-editing-units<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_QUICK_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_QUICK_EDIT_IMAGE_TIPCAPTION'); ?>">
+                <a href="#" data-id="<?php echo $item->id; ?>"<?php echo $listOrder == 'ordering' ? ' class="jg-icon-disabled"' : ''; ?>>
+                  <span class="icon-lightning"></span></a>
+              </div>
+              <div class="pull-left jg-show-editing-units hide<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_CLOSE_QUICK_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_CLOSE_QUICK_EDIT_IMAGE_TIPCAPTION'); ?>">
+                <a href="#">
+                  <span class="icon-lightning"></span></a>
+              </div>
+              <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?>">
+                <a href="<?php echo JRoute::_('index.php?view=edit&id='.$item->id.$this->slimitstart); ?>">
+                  <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPCAPTION'); ?></a>
+              </div>
 <?php       endif;
             if($item->show_delete_icon): ?>
             <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION'); ?>">
@@ -244,6 +253,49 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
           </td>
 <?php     endif?>
           </tr>
+          <tr data-id="<?php echo $item->id; ?>" class="row<?php echo $i % 2; ?> jg-quick-edit-row hide">
+            <td colspan="9">
+              <div class="row-fluid">
+                <div class="span3">
+                  <?php echo JHtml::_('joomgallery.minithumbimg', $item, 'img-polaroid img-rounded', $canView, false); ?>
+                </div>
+                <div class="span9">
+                  <div class="row-fluid">
+                    <div class="span3">
+                      <label for="imgtitle_<?php echo $item->id; ?>"><?php echo JText::_('COM_JOOMGALLERY_COMMON_IMAGE_NAME'); ?><span class="">&nbsp;*</span></label>
+                    </div>
+                    <div class="span9">
+                      <input type="text" value="<?php echo $item->imgtitle; ?>" name="imgtitle" id="imgtitle_<?php echo $item->id; ?>" class="span12 required" required="required" />
+                    </div>
+                  </div>
+                  <div class="row-fluid">
+                    <div class="span3">
+                      <label for="imgauthor_<?php echo $item->id; ?>"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_AUTHOR'); ?></label>
+                    </div>
+                    <div class="span9">
+                      <input type="text" value="<?php echo $item->imgauthor; ?>" name="imgauthor" id="imgauthor_<?php echo $item->id; ?>" class="span12" />
+                    </div>
+                  </div>
+                  <?php if($this->_config->get('jg_edit_metadata')): ?>
+                  <div class="row-fluid">
+                    <div class="span3">
+                      <label for="metadesc_<?php echo $item->id; ?>"><?php echo JText::_('COM_JOOMGALLERY_USERPANEL_METADESC'); ?></label>
+                    </div>
+                    <div class="span9">
+                      <input type="text" value="<?php echo $item->metadesc; ?>" name="metadesc" id="metadesc_<?php echo $item->id; ?>" class="span12" />
+                    </div>
+                  </div>
+                  <?php endif; ?>
+                  <div class="row-fluid">
+                    <label for="imgtext_<?php echo $item->id; ?>"><?php echo JText::_('COM_JOOMGALLERY_COMMON_DESCRIPTION'); ?></label>
+                    <div class="jg-editor-wrapper">
+                      <?php echo $this->editor->display('imgtext_'.$item->id, $item->imgtext, '100%', '168', '5', '5', false, null, null, null, array('mode'=> '0')); ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
 <?php   endforeach; ?>
         </tbody>
         <tfoot>
@@ -268,4 +320,22 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <?php echo JHtml::_('form.token'); ?>
     </form>
   </div>
+  <div id="jg-quick-edit-btn-bar">
+    <button type="button" class="btn btn-primary jg-save" disabled="disabled">
+      <span class="icon-ok"></span> <?php echo JText::_('COM_JOOMGALLERY_MINI_SAVE'); ?>
+    </button>
+    <button type="button" class="btn btn-default jg-cancel">
+      <span class="icon-edit"></span> <?php echo JText::_('COM_JOOMGALLERY_USERPANEL_HIDE_EDITING_UNITS'); ?>
+    </button>
+  </div>
+  <script type="text/javascript">
+    jQuery(window).load(function () {
+        jQuery.QuickEditingData({
+            url: '<?php echo JRoute::_('index.php?task=userpanel.quickedit&format=json'); ?>',
+            getContentCallback: function(editor) {
+              return eval("<?php echo preg_replace(array('/\r|\n/', '/(^|[^\\\\])"/'), array('', '$1\"'), $this->editor->getContent('editor-placeholder')); ?>".replace('editor-placeholder', editor));
+            }
+        });
+    });
+  </script>
 <?php echo JLayoutHelper::render('joomgallery.common.footer', $this, '', array('suffixes' => array('bootone'), 'client' => 1));
