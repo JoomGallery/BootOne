@@ -113,3 +113,7 @@
 .jg_starrating_cat, .jg_starrating_fav, .jg_starrating_top, .jg_starrating_search{
 	margin:0 auto;
 }
+
+.jg-icon-disabled .icon-lightning{
+  color:grey;
+}
