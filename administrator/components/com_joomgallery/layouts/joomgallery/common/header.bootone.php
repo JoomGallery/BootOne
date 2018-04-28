@@ -35,15 +35,14 @@
       <ul class="unstyled jg-links-header">
 <?php    if($displayData->params->get('show_mygal')): ?>
         <li class="jg-userpanel-link">
-          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=userpanel'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_USER_PANEL', null, true); ?>">
-            <span class="icon-upload"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_USER_PANEL') ;?>
-          </a>
+          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=userpanel'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_USER_PANEL', null, true);?>>
+            <span class="icon-user"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_USER_PANEL') ;?></a>
         </li>
 <?php   endif;
         if($displayData->params->get('show_mygal_no_access')): ?>
         <li class="jg-userpanel-link">
           <span class="text-muted<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_MSG_YOU_ARE_NOT_LOGGED', 'COM_JOOMGALLERY_COMMON_USER_PANEL'); ?>">
-            <span class="icon-upload"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_USER_PANEL'); ?>
+            <span class="icon-user"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_USER_PANEL'); ?>
           </span>
         </li>
 <?php   endif;
@@ -51,14 +50,12 @@
         <li class="jg-favourites-link">
     <?php switch($displayData->params->get('show_favourites')):
             case 1: ?>
-          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=favourites'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_DOWNLOAD_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_MY', true); ?>">
-            <span class="icon-basket"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_DOWNLOADZIP_MY'); ?>
-          </a>
+          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=favourites'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_DOWNLOAD_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_MY', true); ?>>
+            <span class="icon-basket"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_DOWNLOADZIP_MY'); ?></a>
       <?php break;
             case 2: ?>
-          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=favourites'); ?>"<?php echo JHtml::_('joomgallery.tip', $displayData->params->get('favourites_tooltip_text'), JText::_('COM_JOOMGALLERY_COMMON_FAVOURITES_MY'), true, false); ?>">
-           <span class="icon-star"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_FAVOURITES_MY'); ?>
-          </a>
+          <a href="<?php echo JRoute::_('index.php?option=com_joomgallery&view=favourites'); ?>"<?php echo JHtml::_('joomgallery.tip', $displayData->params->get('favourites_tooltip_text'), JText::_('COM_JOOMGALLERY_COMMON_FAVOURITES_MY'), true, false); ?>>
+           <span class="icon-star"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_FAVOURITES_MY'); ?></a>
       <?php break;
             case 3: ?>
           <span class="text-muted<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_DOWNLOAD_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_MY'); ?>">
@@ -66,14 +63,13 @@
           </span>
       <?php break;
             case 4: ?>
-          <span class="text-muted<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_MYCOM_JOOMGALLERY_COMMON_FAVOURITES_DOWNLOAD_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_MY'); ?>">
+          <span class="text-muted<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_DOWNLOAD_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_MY'); ?>">
             <span class="icon-star"></span> <?php echo JText::_('COM_JOOMGALLERY_COMMON_FAVOURITES_MY'); ?>
           </span>
       <?php break;
             case 5: ?>
-          <a href="<?php echo JRoute::_('index.php?task=favourites.createzip'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_DOWNLOADZIP_CREATE_TIPTEXT', 'COM_JOOMGALLERY_DOWNLOADZIP_DOWNLOAD', true); ?>">
-            <span class="icon-out"></span> <?php echo JText::_('COM_JOOMGALLERY_DOWNLOADZIP_DOWNLOAD'); ?>
-          </a>
+          <a href="<?php echo JRoute::_('index.php?task=favourites.createzip'); ?>"<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_DOWNLOADZIP_CREATE_TIPTEXT', 'COM_JOOMGALLERY_DOWNLOADZIP_DOWNLOAD', true); ?>>
+            <span class="icon-out"></span> <?php echo JText::_('COM_JOOMGALLERY_DOWNLOADZIP_DOWNLOAD'); ?></a>
       <?php break;
           endswitch; ?>
         </li>

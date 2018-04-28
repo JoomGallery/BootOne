@@ -9,35 +9,33 @@
         <div class="span2 text-right">
 <?php   if($this->params->get('show_feed_icon')): ?>
           <a href="<?php echo $this->params->get('feed_url'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPTEXT', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPCAPTION', true); ?>>
-            <?php echo JHtml::_('joomgallery.icon', 'feed.png', 'COM_JOOMGALLERY_CATEGORY_FEED_TIPCAPTION'); ?>
-          </a>
+            <span class="icon-feed"></span></a>
 <?php   $this->params->set('show_feed_icon', 0);
         endif;
         if($this->params->get('show_headerfavourites_icon')): ?>
 <?php     if($this->params->get('show_headerfavourites_icon') == 1): ?>
           <a href="<?php echo JRoute::_('index.php?task=favourites.addimages&catid='.$this->category->cid); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION', true); ?>>
-            <?php echo JHTML::_('joomgallery.icon', 'star.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION'); ?></a>
+            <span class="icon-star"></span></a>
 <?php     endif;
           if($this->params->get('show_headerfavourites_icon') == 2): ?>
           <a href="<?php echo JRoute::_('index.php?task=favourites.addimages&catid='.$this->category->cid); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION', true); ?>>
-            <?php echo JHTML::_('joomgallery.icon', 'basket_put.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION'); ?></a>
+            <span class="icon-star"></span></a>
 <?php     endif;
           if($this->params->get('show_headerfavourites_icon') == -1): ?>
           <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION', true); ?>>
-            <?php echo JHTML::_('joomgallery.icon', 'star_gr.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION'); ?>
+            <span class="icon-star-empty"></span>
           </span>
 <?php     endif;
           if($this->params->get('show_headerfavourites_icon') == -2): ?>
           <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION', true); ?>>
-            <?php echo JHTML::_('joomgallery.icon', 'basket_put_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION'); ?>
+            <span class="icon-star-empty"></span>
           </span>
 <?php     endif; ?>
 <?php   endif;
         if($this->params->get('show_upload_icon')):
           JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
           <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$this->category->cid); ?>" class="jg-bootone-modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
-            <?php echo JHtml::_('joomgallery.icon', 'add.png', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>
-          </a>
+            <span class="icon-plus-circle"></span></a>
 <?php     $this->params->set('show_upload_icon', 0);
         endif; ?>
         </div>

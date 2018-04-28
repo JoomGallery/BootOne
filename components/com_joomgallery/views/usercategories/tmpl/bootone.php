@@ -208,20 +208,20 @@ $sortFields = $this->getSortFields();
 <?php       if($canEdit || $canEditOwn): ?>
               <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPCAPTION'); ?>">
                 <a href="<?php echo JRoute::_('index.php?view=editcategory&catid='.$item->cid.$this->slimitstart); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_CATEGORY_TIPCAPTION'); ?></a>
+                  <span class="icon-edit"></span></a>
               </div>
 <?php       endif;
             if($canDelete && !$item->children && !$item->images): ?>
               <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DELETE_CATEGORY_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DELETE_CATEGORY_TIPCAPTION'); ?>">
                 <a href="javascript:if (confirm('<?php echo JText::_('COM_JOOMGALLERY_COMMON_ALERT_SURE_DELETE_SELECTED_ITEM', true); ?>')){ location.href='<?php echo JRoute::_('index.php?task=category.delete&catid='.$item->cid.$this->slimitstart, false); ?>';}">
-                  <?php echo JHTML::_('joomgallery.icon', 'edit_trash.png', 'COM_JOOMGALLERY_COMMON_DELETE'); ?></a>
+                  <span class="icon-delete"></span></a>
               </div>
 <?php       endif; ?>
             </td>
             <td class=center>
-<?php         $p_img    = 'cross';
+<?php         $p_img = 'icon-unpublish';
               if($item->published):
-                $p_img = 'tick';
+                $p_img = 'icon-publish';
               endif;
               if($canChange):
                 $p_title  = JText::_('COM_JOOMGALLERY_COMMON_PUBLISH_CATEGORY_TIPCAPTION');
@@ -231,14 +231,14 @@ $sortFields = $this->getSortFields();
                   $p_text  = JText::_('COM_JOOMGALLERY_COMMON_UNPUBLISH_CATEGORY_TIPTEXT');
                 endif; ?>
               <a href="<?php echo JRoute::_('index.php?task=category.publish&catid='.$item->cid.$this->slimitstart); ?>"<?php echo JHTML::_('joomgallery.tip', $p_text, $p_title, true, false); ?>>
-                <?php echo JHTML::_('joomgallery.icon', $p_img.'.png', $p_img); ?></a>
+                <span class="<?php echo $p_img; ?>"></span></a>
 <?php         else:
                 $p_title  = JText::_('COM_JOOMGALLERY_COMMON_UNPUBLISHED');
                 if($item->published):
                   $p_title = JText::_('COM_JOOMGALLERY_COMMON_PUBLISHED');
                 endif; ?>
               <div class="<?php echo JHTML::_('joomgallery.tip', '', $p_title); ?>">
-                <?php echo JHTML::_('joomgallery.icon', $p_img.'.png', $p_img, null, null, false); ?>
+                <span class="<?php echo $p_img; ?>"></span>
               </div>
 <?php         endif;
               if($item->published && $item->hidden):

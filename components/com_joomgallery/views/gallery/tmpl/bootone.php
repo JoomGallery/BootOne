@@ -34,25 +34,23 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <div class="thumbnail">
 <?php     if($row->thumb_src): ?>
         <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
-          <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->name; ?>" />
-        </a>
+          <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->name; ?>" /></a>
 <?php     endif; ?>
       <div class="caption">
         <ul class="unstyled">
           <li>
 <?php     if(in_array($row->access, $this->_user->getAuthorisedViewLevels())): ?>
             <a href="<?php echo $row->link; ?>">
-              <h3><?php echo $this->escape($row->name); ?></h3>
-            </a>
+              <h3><?php echo $this->escape($row->name); ?></h3></a>
 <?php       if($row->password && $this->_config->get('jg_showrestrictedhint')): ?>
             <span<?php echo JHtml::_('joomgallery.tip', JText::_('COM_JOOMGALLERY_COMMON_CATEGORY_PASSWORD_PROTECTED_TIPTEXT'), JText::_('COM_JOOMGALLERY_COMMON_CATEGORY_PASSWORD_PROTECTED'), true); ?>>
-              <?php echo JHtml::_('joomgallery.icon', 'key.png', 'COM_JOOMGALLERY_COMMON_CATEGORY_PASSWORD_PROTECTED'); ?>
+              <span class="icon-key"></span>
             </span>
 <?php       endif; ?>
 <?php     else: ?>
             <span class="jg_no_access<?php echo JHTML::_('joomgallery.tip', JText::_('COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'), $this->escape($row->name), false, false); ?>">
               <h3><?php echo $this->escape($row->name); ?></h3>
-              <?php if($this->_config->get('jg_showrestrictedhint')): echo JHtml::_('joomgallery.icon', 'group_key.png', 'COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'); endif; ?>
+              <?php if($this->_config->get('jg_showrestrictedhint')): ?><span class="icon-key"></span><?php endif; ?>
             </span>
 <?php     endif; ?>
           </li>
@@ -81,20 +79,20 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
           <li>
 <?php       if($row->show_favourites_icon == 1): ?>
             <a href="<?php echo JRoute::_('index.php?task=favourites.addimages&catid='.$row->cid.'&return=gallery'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION', true); ?>>
-              <?php echo JHTML::_('joomgallery.icon', 'star.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION'); ?></a>
+              <span class="icon-star"></span></a>
 <?php       endif;
             if($row->show_favourites_icon == 2): ?>
             <a href="<?php echo JRoute::_('index.php?task=favourites.addimages&catid='.$row->cid.'&return=gallery'); ?>"<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION', true); ?>>
-              <?php echo JHTML::_('joomgallery.icon', 'basket_put.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION'); ?></a>
+              <span class="icon-star"></span></a>
 <?php       endif;
             if($row->show_favourites_icon == -1): ?>
             <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION', true); ?>>
-              <?php echo JHTML::_('joomgallery.icon', 'star_gr.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGES_TIPCAPTION'); ?>
+              <span class="icon-star-empty"></span>
             </span>
 <?php       endif;
             if($row->show_favourites_icon == -2): ?>
             <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_NOT_ALLOWED_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION', true); ?>>
-              <?php echo JHTML::_('joomgallery.icon', 'basket_put_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGES_TIPCAPTION'); ?>
+              <span class="icon-star-empty"></span>
             </span>
 <?php       endif; ?>
           </li>
@@ -103,7 +101,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
             JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
             <li>
               <a href="<?php echo JRoute::_('index.php?view=mini&format=raw&upload_category='.$row->cid); ?>" class="jg-bootone-modal<?php echo JHtml::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPTEXT', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?>" rel="{handler: 'iframe', size: {x: 620, y: 550}}">
-                <?php echo JHtml::_('joomgallery.icon', 'add.png', 'COM_JOOMGALLERY_COMMON_UPLOAD_ICON_TIPCAPTION'); ?></a>
+                <span class="icon-plus-circle"></span></a>
             </li>
 <?php     endif; ?>
         </ul>

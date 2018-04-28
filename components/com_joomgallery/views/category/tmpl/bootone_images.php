@@ -84,48 +84,48 @@
               <li>
 <?php       if($this->params->get('show_download_icon') == 1): ?>
                 <a href="<?php echo JRoute::_('index.php?task=download&id='.$row->id); ?>" class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'download.png', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION'); ?></a>
+                  <span class="icon-download"></span></a>
 <?php       endif;
             if($this->params->get('show_download_icon') == -1): ?>
                 <span class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_LOGIN_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'download_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOAD_TIPCAPTION'); ?>
+                  <span class="icon-download"></span>
                 </span>
 <?php       endif;
             if($this->params->get('show_favourites_icon') == 1): ?>
                 <a href="<?php echo JRoute::_('index.php?task=favourites.addimage&id='.$row->id.'&catid='.$row->catid); ?>" class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPTEXT', true); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'star.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-star"></span></a>
 <?php       endif;
             if($this->params->get('show_favourites_icon') == 2): ?>
                 <a href="<?php echo JRoute::_('index.php?task=favourites.addimage&id='.$row->id.'&catid='.$row->catid); ?>" class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'basket_put.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-star"></span></a>
 <?php       endif;
             if($this->params->get('show_favourites_icon') == -1): ?>
                 <span class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_NOT_ALLOWED_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'star_gr.png', 'COM_JOOMGALLERY_COMMON_FAVOURITES_ADD_IMAGE_TIPCAPTION'); ?>
+                  <span class="icon-star-empty"></span>
                 </span>
 <?php       endif;
             if($this->params->get('show_favourites_icon') == -2): ?>
                 <span class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_NOT_ALLOWED_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'basket_put_gr.png', 'COM_JOOMGALLERY_COMMON_DOWNLOADZIP_ADD_IMAGE_TIPCAPTION'); ?>
+                  <span class="icon-star-empty"></span>
                 </span>
 <?php       endif;
             if($this->params->get('show_report_icon') == 1):
               JHtml::_('behavior.modal', '.jg-bootone-modal'); ?>
                 <a href="<?php echo JRoute::_('index.php?view=report&id='.$row->id.'&catid='.$row->catid.'&tmpl=component'); ?>" class="hasTooltip jg-bootone-modal" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPTEXT'); ?>" rel="{handler:'iframe', size:{x:600,y:520}}"><!--, size:{x:200,y:200}-->
-                  <?php echo JHTML::_('joomgallery.icon', 'exclamation.png', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-notification-circle"></span></a>
       <?php endif;
             if($this->params->get('show_report_icon') == -1): ?>
                 <span class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_NOT_ALLOWED_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'exclamation_gr.png', 'COM_JOOMGALLERY_COMMON_REPORT_IMAGE_TIPCAPTION'); ?>
+                  <span class="icon-notification-circle"></span>
                 </span>
 <?php       endif;
             if($row->show_edit_icon): ?>
                 <a href="<?php echo JRoute::_('index.php?view=edit&id='.$row->id.$this->redirect); ?>" class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT'); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-edit"></span></a>
 <?php       endif;
             if($row->show_delete_icon): ?>
                 <a href="javascript:if(confirm('<?php echo JText::_('COM_JOOMGALLERY_COMMON_ALERT_SURE_DELETE_SELECTED_ITEM', true); ?>')){ location.href='<?php echo JRoute::_('index.php?task=image.delete&id='.$row->id.$this->redirect, false);?>';}" class="hasTooltip" title="<?php echo JHtml::_('tooltiptext', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPTEXT', true); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'edit_trash.png', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-delete"></span></a>
 <?php       endif; ?>
                 <?php echo $row->event->icons; ?>
               </li>

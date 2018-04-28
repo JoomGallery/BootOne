@@ -11,8 +11,9 @@
     <div class="span6">
  <?php if($displayData->params->get('show_rmsm_legend')): ?>
       <div class="text-muted">
-        <?php echo JHtml::_('joomgallery.icon', 'group_key.png', 'COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY'); ?>
-        <?php echo  JText::_('COM_JOOMGALLERY_COMMON_RESTRICTED_CATEGORIES'); ?>
+        <span<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_TIP_YOU_NOT_ACCESS_THIS_CATEGORY', 'COM_JOOMGALLERY_COMMON_RESTRICTED_CATEGORIES', true); ?>>
+        <span class="icon-locked"></span>
+        <?php echo JText::_('COM_JOOMGALLERY_COMMON_RESTRICTED_CATEGORIES'); ?></span>
       </div>
 <?php endif;
       if($displayData->params->get('show_footer_backlink')): ?>
